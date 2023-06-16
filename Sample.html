@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <input type="text" name="textvalue" id="textvalue">
+        <h1 id="showtext"></h1>
+    </div>
+    <button onclick="funcshowtext()">Submit</button>
+    <script>
+        function funcshowtext(){
+        let text = document.getElementById("textvalue").value;
+        document.getElementById("showtext").innerHTML=text;
+        }
+    </script>
+</body>
+</html>

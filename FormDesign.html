@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        header{
+            text-align: center;
+            margin-top:20px;
+            background-color: white;
+        }
+        .input-tags{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:20px;
+            padding:20px;
+        }
+        input{
+            margin:20px;
+            padding:20px;
+            border:none;
+            border-bottom:1px solid #000000;
+        }
+        input[type=submit]{
+            background-color: blue;
+            color:white;
+            margin:30%;
+        }
+        .form-design{
+            margin:10px 30px;
+            align-items: center;
+            width:50%;
+            margin-left:25%;
+        }
+        .nav-bar{
+            margin-top:20px;
+            padding:20px;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: antiquewhite;
+        }
+        img{
+            border-radius: 50px;
+        }
+        input:focus{
+            outline:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-design">
+        <header>
+            <h1>Register</h1>
+            <nav class="nav-bar">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" alt="" heigth="50px" width="50px">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/768px-Facebook_icon.svg.png" alt="" height="50px" width="50px">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" height="50px" width="50px">
+                <img src="https://play-lh.googleusercontent.com/kMofEFLjobZy_bCuaiDogzBcUT-dz3BBbOrIEjJ-hqOabjK8ieuevGe6wlTD15QzOqw" alt="" width="50px" heigth="50px">
+            </nav>
+        </header>
+        <main class="input-tags">
+            <form action="">
+                <input type="text" name="username" placeholder="Username" required><br>
+                <input type="email" name="email" placeholder="Email" required><br>
+                <input type="password" name="password" placeholder="password" min="8" required><br>
+                <input type="password" name="confirm-password" placeholder="Confirm Password" required><br>
+                <input type="submit" value="Resgister" >
+            </form>
+        </main>
+    </div>
+    
+</body>
+</html>
