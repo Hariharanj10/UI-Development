@@ -8,6 +8,9 @@
             margin:0px;
             padding:0px;
             box-sizing: border-box;
+            font-family: monospace;
+            font-size: large;
+            font-weight: 100;
         }
         nav ul{
             list-style: none;
@@ -19,6 +22,7 @@
             margin:20px;
             padding:10px;
             border:2px solid #000000;
+            background-color: antiquewhite;
         }
         main{
             margin:20px;
@@ -30,6 +34,26 @@
         footer{
             margin:20px;
             padding:20px;
+        }
+        button{
+            background-color: aquamarine;
+            width: 80px;
+            height:50px;
+            border-radius: 20px;
+        }
+        button:hover{
+            background-color: bisque;
+        }
+        p,details{
+            cursor:pointer;
+        }
+        li:hover{
+            padding:5px;
+            border-left:3px solid black;
+            pointer:cursor;
+        }
+        ul:hover li{
+            opacity: 1;
         }
 
     </style>
@@ -62,6 +86,7 @@
             <summary>Press Enter read the text</summary>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, repellendus modi explicabo ex accusantium saepe tenetur eligendi tempore voluptatum exercitationem laudantium nulla quaerat laborum fuga. Voluptate sapiente doloremque cupiditate nulla.</p>
         </details>
+        <button>Click</button>
     </main>
     <footer>
         This is the footer of this page.
