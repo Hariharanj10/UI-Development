@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      .header {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        align-items: center;
+      }
+      .header a {
+        text-decoration: none;
+        color: black;
+      }
+      .header a,.header span{
+        margin-left:10px;
+      }
+      .image-container{
+        text-align: center;
+        margin-top: 10%;
+      }
+      input[type="text"]{
+        width:30%;
+        border-radius: 30px;
+        height: 40px;
+        border:none;
+        position: relative;
+        text-align: center;
+      }
+      .search-bar{
+        text-align: center;
+        margin-top: 20px;
+        border:2px solid #000000;
+        border-radius:30px;
+        margin-left:25%;
+        width:50%;
+        height:50px;
+      }
+      input:focus{
+        outline:none;
+      }
+      .search-bar span{
+        position:relative;
+        top:9px;
+      }
+      .search-button{
+        display: flex;
+        justify-content: center;
+        margin-top:10px;
+        gap:5px;
+        padding:20px;
+        text-align: center;
+      }
+      button{
+        outline:none;
+        height: 30px;
+        border:none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span><a href="#">Gmail</a> </span>
+        <span><a href="#"> Images</a></span>
+        <span class="material-symbols-outlined"> apps </span>
+        <span class="material-symbols-outlined"> account_circle </span>
+      </div>
+      <div class="image-container">
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+      </div>
+      <div class="search-bar">
+        <span class="material-symbols-outlined">
+            search
+            </span>
+        <input type="text" placeholder="Search Google or type a url">
+        <span class="material-symbols-outlined">
+            mic
+         </span>
+         <span class="material-symbols-outlined">
+            photo_camera
+            </span>
+      </div>
+      <div class="search-button">
+        <button>Google search</button>
+        <button>I'm feeling lucky</button>
+      </div>
+      <div class="language">
+        <p>Google offered in:</p>
+      </div>
+    </div>
+  </body>
+</html>
