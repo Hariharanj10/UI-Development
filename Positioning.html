@@ -1,13 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Positioning</title>
-</head>
-<body>
-    <div>
-        
+<html>
+  <head>
+    <style>
+      div.relative {
+        position: relative;
+        width: 400px;
+        height: 200px;
+        border: 3px solid #73ad21;
+      }
+
+      div.absolute {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 200px;
+        height: 100px;
+        border: 3px solid #73ad21;
+      }
+      div.sticky {
+        position: sticky;
+        top: 0;
+        background-color: green;
+        border: 2px solid #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>position: absolute;</h2>
+
+    <p>
+      An element with position: absolute; is positioned relative to the nearest
+      positioned ancestor (instead of positioned relative to the viewport, like
+      fixed):
+    </p>
+
+    <div class="relative">
+      This div element has position: relative;
+      <div class="absolute">This div element has position: absolute;</div>
     </div>
-</body>
+    <div class="sticky">I am sticky!</div>
+
+    <div style="padding-bottom: 2000px">
+      <p>
+        In this example, the sticky element sticks to the top of the page (top:
+        0), when you reach its scroll position.
+      </p>
+      <p>Scroll back up to remove the stickyness.</p>
+      <p>
+        Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
+        definitiones no quo, maluisset concludaturque et eum, altera fabulas ut
+        quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert
+        laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no
+        molestiae voluptatibus.
+      </p>
+      <p>
+        Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
+        definitiones no quo, maluisset concludaturque et eum, altera fabulas ut
+        quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert
+        laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no
+        molestiae voluptatibus.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque soluta
+        sunt sint accusamus iusto eius, nisi quas, quis facilis repellat neque
+        non magnam iure labore veritatis temporibus quaerat? Modi, animi! Odio
+        placeat veniam architecto soluta ut dignissimos aliquid? Reprehenderit
+        nisi dolor earum, deleniti at iusto repudiandae saepe, expedita eveniet
+        unde laudantium veniam eaque voluptatibus perspiciatis officiis facilis
+        eos animi odit. Nemo porro id cupiditate iste, odit illum et eveniet
+        consequatur architecto vitae necessitatibus fugiat beatae distinctio
+        pariatur exercitationem magnam inventore est. Illo iusto consectetur,
+        aliquam fugit perferendis ipsam eius reprehenderit. Omnis, mollitia sint
+        tenetur a cum animi sit quibusdam aperiam officiis fugit laudantium
+        laboriosam, accusantium error ad odit iste beatae hic qui provident est
+        aliquid optio cumque. Quibusdam, perferendis. Officiis? Corporis velit
+        doloribus fugiat consectetur voluptates eaque praesentium ab quod, ex
+        error officia tempore consequatur quae veritatis molestias facilis dicta
+        nihil repellendus sapiente aperiam iure et ea placeat. Id, itaque? Porro
+        repudiandae aperiam dolor architecto! Magni natus praesentium ipsam
+        perspiciatis quia officia molestias, vitae excepturi explicabo fuga
+        sunt! A cupiditate est magnam tempore nobis laborum exercitationem
+        corrupti vel minima illo. Illo quaerat sunt iusto hic omnis quisquam eos
+        accusantium provident eveniet necessitatibus, in architecto non nisi aut
+        nobis ipsum, consequuntur iure ea cupiditate amet ipsa officiis natus!
+        Nihil, sapiente doloribus. Dicta officiis voluptatem veniam excepturi
+        facere minima, cum nam maxime omnis quia debitis esse tenetur optio
+        inventore dolores nobis, iure eveniet non fugiat consectetur corporis
+        nisi! Ex dolor quasi deserunt. Minus doloribus eaque amet, dignissimos
+        facere id veritatis eius et blanditiis aspernatur, optio nemo facilis
+        quae harum magnam sint est dolore. Quaerat, necessitatibus neque
+        repudiandae eligendi impedit molestiae natus ullam? Officia saepe qui
+        omnis dolores delectus dolor amet harum culpa, autem alias rem quasi
+        corrupti, blanditiis accusamus ipsum nostrum. Consectetur quidem
+        nesciunt debitis hic dolor! Id deserunt architecto dignissimos itaque!
+      </p>
+    </div>
+  </body>
 </html>

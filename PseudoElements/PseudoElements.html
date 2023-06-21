@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PseudoElements</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container-1 {
+        margin: 20px;
+        padding: 20px;
+      }
+      .container-1::first-letter {
+        color: aqua;
+      }
+      p:first-child {
+        background-color: bisque;
+      }
+      p:nth-child(2) {
+        background-color: cyan;
+      }
+      .container-3 {
+        margin: 20px;
+        padding: 20px;
+      }
+      ul li:nth-of-type(2) {
+        color: blue;
+      }
+      .box::before {
+        content: "This should show before the other content. ";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-1">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+        quas eos ex. Fugiat ex a blanditiis quis eligendi doloremque nesciunt
+        eum molestiae iusto nam, magnam reiciendis dolorem ut error magni.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim omnis
+        magni, explicabo odit perferendis, tempore quis amet, facere vel fuga
+        reiciendis laborum? Ea tempora mollitia necessitatibus culpa molestiae
+        illo quidem!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, ab modi
+        quam molestias ea fuga illum vitae et ipsum nesciunt enim perspiciatis
+        aspernatur doloremque eligendi quis amet corporis dicta deserunt?
+      </p>
+    </div>
+    <p>This paragraph is the first child of its parent (body).</p>
+    <p>This paragraph is not the first child of its parent (body).</p>
+
+    <div>
+      <p>This paragraph is the first child of its parent (div).</p>
+      <p>This paragraph is not the first child of its parent (div).</p>
+    </div>
+    <div class="container-3">
+      <ul>
+        <li>Javascript</li>
+        <li>Reactjs</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>Css</li>
+        <li>Html</li>
+        <li>Jquery</li>
+        <li>C</li>
+      </ul>
+    </div>
+    <div>
+      <p class="box">Content in the box in my HTML page.</p>
+    </div>
+  </body>
+</html>
