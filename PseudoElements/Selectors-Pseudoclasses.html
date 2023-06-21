@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tooltip</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <style>
+       body{
+        font-family: "Audiowide", sans-serif;
+       }
+      #first-p{
+        display: none;
+        background-color: yellow;
+        padding: 20px;
+      }
+
+      div:hover #first-p {
+        display: block;
+      }
+      .odd-even li:nth-last-child(even){
+        color:coral;
+      }
+      .odd-even-2 li:nth-last-child(odd){
+        color: brown;
+      }
+      input:invalid {
+        border: 2px solid red;
+       }
+       p:last-of-type {
+         background-color: #ff0000;
+        }
+        p:nth-last-of-type(2) {
+            background: yellow;
+            padding:20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="first">
+      Hover over this div element to show the p element
+      <p id="first-p">Tada! Here I am!</p>
+    </div>
+    <div>
+        <ul class="odd-even">
+            <li>odd</li>
+            <li>even</li>
+            <li>odd</li>
+            <li>even</li>
+            <li>odd</li>
+            <li>even</li>
+        </ul>
+    </div>
+    <div>
+        <ul class="odd-even-2">
+            <li>odd</li>
+            <li>even</li>
+            <li>odd</li>
+            <li>even</li>
+            <li>odd</li>
+            <li>even</li>
+        </ul>
+    </div>
+    <label for="email">Email</label>
+    <input type="email" id="email" value="supportEmail" placeholder="Enter a gmail">
+    <div>
+      <h1>This is a heading</h1>
+      <h1>This is a heading</h1>
+      <p>The first paragraph.</p>
+      <p>The second paragraph.</p>
+      <p>The third paragraph.</p>
+      <p>The fourth paragraph.</p>
+    </div>
+  </body>
+</html>
