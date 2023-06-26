@@ -1,0 +1,34 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header header header header header"
+    "aside  main main main main menu1"
+    "footer footer footer footer footer footer";
+}
+
+.header {
+  grid-area: header;
+  background-color: darkmagenta;
+  height: 10vh;
+}
+.aside {
+  grid-area: aside;
+  background-color: aquamarine;
+  height: 60vh;
+}
+.main {
+  grid-area: main;
+  background-color: chocolate;
+  height: 60vh;
+}
+
+.menu1 {
+  grid-area: menu1;
+  background-color: gray;
+  height: 60vh;
+}
+.footer {
+  grid-area: footer;
+  background-color: cadetblue;
+  height: 10vh;
+}
