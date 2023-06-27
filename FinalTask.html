@@ -7,6 +7,7 @@
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="/FinalTask.css">
       <link
         href="https://fonts.googleapis.com/css?family=Caveat:400,700&amp;subset=cyrillic"
         rel="stylesheet"
@@ -18,132 +19,7 @@
         crossorigin="anonymous"
       />
     </head>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-      .header {
-        background-color: white;
-        width: 100%;
-        height: 77px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 28px;
-        box-sizing: border-box;
-        position: fixed;
-        top:0px;
-      }
 
-      .header .left-nav {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
-      .header .right-nav {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 15px;
-        font-size: 14px;
-      }
-      .right-nav a {
-        text-decoration: none;
-        color: black;
-      }
-      .right-nav {
-        color: black;
-        font-weight: 600;
-        font-size: 14px;
-        margin-right: 24px;
-        cursor: pointer;
-      }
-      .main {
-        background-image: url(https://edyoda.s3.ap-south-1.amazonaws.com/public/landing-background.png);
-        width: 100%;
-        height: 90vh;
-      }
-      .main h1 {
-        width: 100%;
-        font-size: 44px;
-        font-weight: 600;
-        letter-spacing: 8.8px;
-        line-height: 1.2;
-        text-align: center;
-        vertical-align: middle;
-        margin: 30px;
-        padding: 30px;
-        padding-top: 200px;
-      }
-      .main p {
-        width: 100%;
-        font-size: 14px;
-        letter-spacing: 0.5px;
-        font-weight: 400;
-        color: #8b8b99;
-        text-align: center;
-        padding-top: 32px;
-        text-align: center;
-        display: block;
-      }
-      #Buy-now-button {
-        background-color: #aad236;
-        color: white;
-        margin: 0px 16px 0px 0px;
-        padding: 9px 34px;
-        border: none;
-        border-radius: 5px;
-      }
-      .right-nav span {
-        gap: 10px;
-      }
-      .sections {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: stretch;
-      }
-      .step-section-1,
-      .step-section-2,
-      .step-section-3,
-      .step-section-4 {
-        width: 25%;
-        padding: 112px 48px;
-        text-align: center;
-        color: white;
-        box-sizing: border-box;
-      }
-      .step-section-1 {
-        background-color: #5acda6;
-      }
-      .step-section-2 {
-        background-color: #91ac41;
-      }
-      .step-section-3 {
-        background-color: #e4b476;
-      }
-      .step-section-4 {
-        background-color: #f69dad;
-      }
-      .store-section {
-        width: 100%;
-        background-color: #f7eee2;
-        padding-top: 75px;
-        padding-bottom: 75px;
-        text-align: center;
-      }
-        .store-wrapper{
-            width: 100%;
-            display: flex;
-            justify-content: stretch;
-            margin: 0 auto;
-        }
-        
-    </style>
-  </head>
   <body>
     <class="container">
       <div class="header">
@@ -156,15 +32,11 @@
           />
         </div>
         <div class="right-nav">
-          <span
-            ><label for="DemoPages"> Demo Pages</label>
-            <select name="Demo Pages" id="DemoPages">
-              <option value="Menu1"></option>
-              <option value="Menu2"></option>
-              <option value="Menu3"></option></select
-          ></span>
-          <span><a href="">Watch videos</a></span>
-          <span>Blocks</span>
+          <span class="hide-nav">
+            <p>DemoPages <i class="fas fa-caret-down"></i></p>
+          </span>
+          <span class="hide-nav"><a href="">Watch videos</a></span>
+          <span class="hide-nav">Blocks <i class="fas fa-caret-down"></i></span>
           <span><button id="Buy-now-button">Buy now</button></span>
         </div>
       </div>
@@ -173,85 +45,199 @@
         <p>
           With nutrition, all the vital functions of the body are connected. It
           is the source of the development of tissues and cells, their constant
-          renewal, the saturation of man with energy.
+          renewal,<br> the saturation of man with energy.
         </p>
       </div>
       <div class="sections">
         <div class="step-section-1">
-          <i class="fa fa-cut"></i>
-          <h3>Step 01.</h3>
-          <p>
+          <div class="section-1-icons">
+            <i class="fa fa-cut"></i>
+          </div>
+          <div><h3>Step 01.</h3></div>
+          <div><p>
             Vegetables are an integral part of the human diet. They are
             extremely useful because of the high content of carbohydrates,
             various acids, vitamins and active elements in the form, easy for
             digestion.
-          </p>
+          </p></div>
         </div>
         <div class="step-section-2">
-          <i class="fa fa-paint-brush"></i>
-          <h3>Step 02.</h3>
-          <p>
+          <div class="section-1-icons">
+            <i class="fa fa-paint-brush"></i>
+          </div>
+          <div><h3>Step 02.</h3></div>
+          <div><p>
             Fresh tomatoes are ideal for replenishing the loss of minerals.
             These vegetables contain a lot of acids that our body needs for
             full-fledged work.
-          </p>
+          </p></div>
+          
         </div>
         <div class="step-section-3">
-          <i class="fa fa-shopping-bag"></i>
-          <h3>Step 03.</h3>
-          <p>
+          <div class="section-1-icons">
+            <i class="fa fa-shopping-bag"></i>
+          </div>
+          <div><h3>Step 03.</h3></div>
+          <div><p>
             In the content of vitamin C, sweet peppers are superior to lemons
             and even black currants! The greatest amount of vitamin is contained
             around the stalk, that is, in the part of the product that is
             usually cut during cleaning.
-          </p>
+          </p></div>
         </div>
         <div class="step-section-4">
-          <i class="far fa-smile"></i>
-          <h3>Step 04.</h3>
-          <p>
+          <div class="section-1-icons">
+            <i class="far fa-smile"></i>
+          </div>
+          <div><h3>Step 04.</h3></div>
+          <div><p>
             If you sometimes eat hot chili peppers, this will help normalize
             cerebral circulation, ease the condition with bronchial asthma,
             cough, sore throat, flu.
-          </p>
+          </p></div>
         </div>
       </div>
       <div class="store-section">
-        <p id="fresh-food-heading">Fresh Food</p>
-        <h3>Our Vegan Store!</h3>
-        <p id="store-desc">
-          Radish contains a lot of fiber, pectin and mineral salts.
-        </p>
+        <div class="store-inner-section">
+        <div><p id="store-section-heading">Fresh Food</p></div>
+        
+        <div><h1>Our Vegan Store!</h1></div> 
+         <div><p id="store-desc" class="store-item-para">
+            Radish contains a lot of fiber, pectin and mineral salts.
+         </p></div> 
         <div class="store-wrapper">
             <div class="store-items">
                 <div class="cam-icon">
                     <i class="fa fa-camera"></i>
-                    <h3>Fresh Vegetables</h3>
-                    <p>Use for cooking several types of vegetable oil.</p>
                 </div>
+                <div><h3>Fresh Vegetables</div></h3>
+                    <div><p class="store-item-para-2">Use for cooking several types of vegetable oil.</p></div>
             </div>
             <div class="store-items">
-                <div class="icon-2">
+                <div class="Rocket-icon">
                     <div class="icon-wrapper"><i class="fa-rocket fa"></i></div>
-                    <h3>High Quality</h3>
-                    <p>This is the best source of essential fatty acids for the body.<h3>High Quality</h3></p>
-                </div>
+                 </div>
+                    <div><h3>High Quality</h3></div>
+                    <div><p class="store-item-para-2">This is the best source of essentialfatty acids for the body.</p></div>
+               
             </div>
             <div class="store-items">
-                <div class="icon-3"> <i class="fab fa-twitter"></i>
-                    <h3>Sale</h3>
-                    <p>It is very good, if in the kitchen there will always be several bottles with different oils.</p>
+                <div class="twitter-icon"> 
+                  <i class="fab fa-twitter"></i>
                 </div>
+                    <div><h3>Sale</h3></div>
+                    <div><p class="store-item-para-2">It is very good, if in the kitchen there will always be several bottles with different oils.</p></div>
             </div>
             <div class="store-items">
-                <div class="icon-4">
+                <div class="comment-icon">
                     <i class="fab fa-weixin"></i>
-                    <h3>Best Price</h3>
-                    <p>Remember that unrefined oils are not suitable for heat treatment.<h3>Best Price</h3></p>
+                    
                 </div>
+                <div><h3>Best Price</h3></div>
+                    <div><p class="store-item-para-2">Remember that unrefined oils are not suitable for heat treatment.</p></div>
+            </div>
+
+        </div>
+      </div>
+      </div>
+      <div class="tesimonials-section">
+        <p id="testimonials-heading">Fresh Food</p>
+        <h1 id="testimonials-header"> Our Vegan Shop!</h1>
+         <p id="testimonials-review-heading">According to experts, any habit can be formed in 21 days.<br> The same statement applies to healthy eating.</p>
+      <div class="testimonial-item-container">
+        <div class="testimonial-item">
+          <img src="https://mobirise.com/extensions/organicamp/assets/images/face5.jpg">
+          <p class="testimonial-review-text">Sales consultants are very polite. Many of the products have tried and are ready to prompt and recommend to customers. The staff shows that they completely share the philosophy of proper nutrition, if you can say so.</p>
+          <h3 class="testimonial-by">VERONICA KING</h3>
+          <p class="role">Cook</p>
+        </div>
+        <div class="testimonial-item">
+          <img src="https://mobirise.com/extensions/organicamp/assets/images/face6.jpg">
+          <p class="testimonial-review-text">Sales consultants are very polite. Many of the products have tried and are ready to prompt and recommend to customers. The staff shows that they completely share the philosophy of proper nutrition, if you can say so.</p>
+          <h3 class="testimonial-by">JIM CASH</h3>
+          <p class="role">Seller</p>
+        </div>
+        <div class="testimonial-item">
+          <img src="https://mobirise.com/extensions/organicamp/assets/images/face7.jpg">
+          <p class="testimonial-review-text">Sales consultants are very polite. Many of the products have tried and are ready to prompt and recommend to customers. The staff shows that they completely share the philosophy of proper nutrition, if you can say so.</p>
+          <h3 class="testimonial-by">PETER GOODMAN</h3>
+          <p class="role">Manager</p>
+        </div>
+      </div>
+      </div>
+      <div class="follow-section">
+        <div class="left-side">
+          <img id="strawberry-img" src="https://cdn.pixabay.com/photo/2016/04/13/07/15/strawberries-1326148_1280.jpg" alt="" >
+        </div>
+        <div class="right-side">
+            <div class="follow-details">
+              <h3>Follow Us</h3>
+              <p>A wide range of products; many unusual and tasty products; courteous staff.</p>
+              <input type="text" id="input-sub-email" placeholder="Your Email">
+              <input type="submit"id="input-sub-btn" type="submit" value="SUBSCRIBE">
             </div>
         </div>
       </div>
+      <div class="details-section">
+        <div class="details-section-item">
+          <h3>7</h3>
+          <p>Year of experience</p>
+        </div>
+        <div class="details-section-item">
+          <h3>123k</h3>
+          <p>Happy Customer</p>
+        </div>
+        <div class="details-section-item">
+          <h3>72k</h3>
+          <p>100% Satisfaction</p>
+        </div>
+        <div class="details-section-item">
+          <h3>13k</h3>
+          <p>Detox Smoothies</p>
+        </div>
+      </div>
+      <div class="video-section"> 
+        <div> <h3 id="video-heading">Vimeo Video</h3></div>
+        <div id="linebreak"> </div><br>
+        <div id="video-container">
+          <iframe id="video-border" src="https://player.vimeo.com/video/275412279" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="address-section">
+        <div class="address-side">
+          <p class="contactus">Contact Us</p>
+          <h3 class="address-section-heading">Address Information</h3>
+          <p class="desc">Overeating is one of the most common causes of overweight and<br> digestive problems.</p>
+          <h4 class="address-heading">London Store</h4>
+          <p class="address-details-1">
+
+            Roeterseiland Campus Building E<br>
+            6th floor London <br>
+            Monday to Friday : 9am to 8pm <br>
+            examplemail.mail.com
+          </p>
+          <h4 class="address-heading">Berlin Store</h4>
+          <p class="address-details-1">
+            Roeterseiland Campus Building E<br>6th floor London<br>Monday to Friday : 9am to 8pm<br>examplemail.mail.com</p>
+        </div>
+        <div class="form-side">
+          <p class="contactus">Meet Our Team</p>
+          <h3 class="form-section-heading">Get In Touch</h3>
+          <p class="address-description">The task of proper nutrition - to remove from the diet <br> harmful food and enrich it useful.
+          <form action="">
+            <input type="text" class="input-box" placeholder="Name">
+            <input type="tel" class="input-box" placeholder="Phone">
+            <input type="text" class="input-box" placeholder="Subject"> 
+            <input type="email" class="input-box" name="email" id="email" placeholder="Email">
+            <textarea class="input-box">Message</textarea>
+            <input type="submit" id="submit-button" value="SUBMIT NOW"> 
+          </form>
+        </div>
+      </div>
+      <div class="footer">
+        <footer>© Copyright 2018 Mobirise - All Rights Reserved</footer>
+      </div>
+      
     </div>
   </body>
 </html>
