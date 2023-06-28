@@ -21,7 +21,7 @@
     </head>
 
   <body>
-    <class="container">
+    <div class="container">
       <div class="header">
         <div class="left-nav">
           <img
@@ -32,9 +32,20 @@
           />
         </div>
         <div class="right-nav">
-          <span class="hide-nav">
-            <p>DemoPages <i class="fas fa-caret-down"></i></p>
-          </span>
+          <div id="dropdown">
+            <span class="hide-nav" >
+              <p id="demopages">DemoPages <i class="fas fa-caret-down"></i></p>
+            </span>
+            <div id="menu-items">
+              <a href="" class="menu-item-list">Menu Item 1
+              </a><br>
+              <a href="" class="menu-item-list">Menu Item 1
+              </a><br>
+              <a href="" id="drop-down-3"class="menu-item-list">Menu Item 1
+              </a>
+            </div>
+          </div>
+          
           <span class="hide-nav"><a href="">Watch videos</a></span>
           <span class="hide-nav">Blocks <i class="fas fa-caret-down"></i></span>
           <span><button id="Buy-now-button">Buy now</button></span>
@@ -45,7 +56,7 @@
         <p>
           With nutrition, all the vital functions of the body are connected. It
           is the source of the development of tissues and cells, their constant
-          renewal,<br> the saturation of man with energy.
+          renewal the saturation of man with energy.
         </p>
       </div>
       <div class="sections">
@@ -110,7 +121,7 @@
                 <div class="cam-icon">
                     <i class="fa fa-camera"></i>
                 </div>
-                <div><h3>Fresh Vegetables</div></h3>
+                <div><h3>Fresh Vegetables</h3></div>
                     <div><p class="store-item-para-2">Use for cooking several types of vegetable oil.</p></div>
             </div>
             <div class="store-items">
@@ -143,7 +154,7 @@
       <div class="tesimonials-section">
         <p id="testimonials-heading">Fresh Food</p>
         <h1 id="testimonials-header"> Our Vegan Shop!</h1>
-         <p id="testimonials-review-heading">According to experts, any habit can be formed in 21 days.<br> The same statement applies to healthy eating.</p>
+         <p id="testimonials-review-heading">According to experts, any habit can be formed in 21 days.The same statement applies to healthy eating.</p>
       <div class="testimonial-item-container">
         <div class="testimonial-item">
           <img src="https://mobirise.com/extensions/organicamp/assets/images/face5.jpg">
@@ -153,13 +164,13 @@
         </div>
         <div class="testimonial-item">
           <img src="https://mobirise.com/extensions/organicamp/assets/images/face6.jpg">
-          <p class="testimonial-review-text">Sales consultants are very polite. Many of the products have tried and are ready to prompt and recommend to customers. The staff shows that they completely share the philosophy of proper nutrition, if you can say so.</p>
+          <p class="testimonial-review-text">The assortment is very wide. From useful organic oils, cereals and teas to specific products for vegetarians, such as sausages and pies without meat.</p>
           <h3 class="testimonial-by">JIM CASH</h3>
           <p class="role">Seller</p>
         </div>
         <div class="testimonial-item">
           <img src="https://mobirise.com/extensions/organicamp/assets/images/face7.jpg">
-          <p class="testimonial-review-text">Sales consultants are very polite. Many of the products have tried and are ready to prompt and recommend to customers. The staff shows that they completely share the philosophy of proper nutrition, if you can say so.</p>
+          <p class="testimonial-review-text">I want to say a huge thank you to the management of the store and all its employees, I'm not a vegetarian, it would seem that the store is not for me, but it's not so, any person who comes here will find something useful.</p>
           <h3 class="testimonial-by">PETER GOODMAN</h3>
           <p class="role">Manager</p>
         </div>
@@ -229,8 +240,8 @@
             <input type="tel" class="input-box" placeholder="Phone">
             <input type="text" class="input-box" placeholder="Subject"> 
             <input type="email" class="input-box" name="email" id="email" placeholder="Email">
-            <textarea class="input-box">Message</textarea>
-            <input type="submit" id="submit-button" value="SUBMIT NOW"> 
+            <textarea id="message-box" class="input-box">Message</textarea>
+            <div><input type="submit" id="submit-button" value="SUBMIT NOW"> </div>
           </form>
         </div>
       </div>
