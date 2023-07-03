@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <h1 id="count-value">1</h1>
+        <button onclick="interval()">Start</button>
+        <button onclick="stopfunc()">Stop</button>
+    </div>
+
+    <script>
+       let interval= setInterval(function(){
+            let countValue=document.getElementById("count-value")
+            countValue.innetText =Number(++countValue.innerText)
+        },1000)
+        function stopfunc(){
+            clearInterval(interval)
+        }
+    </script>
+</body>
+</html>

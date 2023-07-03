@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<style>
+    #container{
+        width: 100vw;
+        height:100vh;
+        background-image: url('https://images.pexels.com/photos/3601184/pexels-photo-3601184.jpeg?cs=srgb&dl=pexels-patrick-case-3601184.jpg&fm=jpg');
+        background-repeat:no-repeat ;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #count-button{
+        width:200px;
+        height:60px;
+        background-color: #aad236;
+        border-radius: 80px;
+        outline:none;
+    }
+    #show-value{
+        color: blanchedalmond;
+    }
+</style>
+<body>
+    <div id="container">
+        <h1 id="show-value"></h1>
+        <button id="count-button" onclick="changeValue()"><h1 id="first-heading">10</h1></button>
+        <button id="reset-button" onclick="resetValue()"> Reset</button>
+
+    </div>
+    <script>
+        function changeValue(){
+            let countValue=document.getElementById("first-heading").innerText;
+            document.getElementById("first-heading").innerText =++countValue
+            let showValue=document.getElementById("show-value").innerText="Count"+countValue
+            let bgImage=document.getElementById("container")
+            if(countValue==0){
+                bgImage.style.backgroundImage="url()"
+            }
+            if(countValue % 2===0){
+                bgImage.style.backgroundImage ="url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHZAq08u4YaR0Jsu2CgeptdxC74y-9QEeFYEAb6YHP&s')"
+                bgImage.style.backgroundSize="cover"
+                bgImage.style.heigth="100px"
+            }else{
+                bgImage.style.backgroundImage="url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg')"
+            }
+        }
+        function resetValue(){
+            document.getElementById("first-heading").innerText=0;
+        }
+    </script>
+</body>
+</html>

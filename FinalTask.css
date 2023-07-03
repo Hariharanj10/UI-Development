@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 28px;
+  /* padding: 0 28px; */
   box-sizing: border-box;
   position: fixed;
   top: 0px;
@@ -21,7 +21,7 @@
 }
 #menu-items {
   display: none;
-  padding: 0 20px;
+  padding: 0 10px;
   position: absolute;
   top: 60px;
   background-color: white;
@@ -66,6 +66,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding:0 28px;
 }
 .header .right-nav {
   display: flex;
@@ -73,16 +74,20 @@
   align-items: center;
   gap: 15px;
   font-size: 14px;
+  padding:0 32px;
+  
 }
-.right-nav a {
+.right-nav a{
   text-decoration: none;
   color: black;
+  padding:10px;
 }
 .right-nav {
   color: black;
   font-weight: 600;
   font-size: 14px;
-  margin-right: 24px;
+  /* margin-right: 22px; */
+  padding:0 34px;
   cursor: pointer;
 }
 .main {
@@ -124,10 +129,16 @@
   margin: 0px 16px 0px 0px;
   padding: 9px 34px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 .right-nav span {
   gap: 10px;
+}
+#menu-button{
+  padding:10px;
 }
 .sections {
   width: 100%;

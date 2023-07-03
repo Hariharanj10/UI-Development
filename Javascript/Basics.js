@@ -164,10 +164,10 @@ function rev(str){
     console.log(strClone)
     var finalout=""
     for(let i=0;i<strClone;i++){
-            count=strClone.length
+        count=strClone[i].length
         if(count%2==1){
             result=""
-            for(let k=strClone.length;k>strClone[i].length;k--){
+            for(let k=strClone[i].length;k>strClone[i].length;k--){
                 result+=strClone.chatAt(i)
                 console.log(result)
             }
