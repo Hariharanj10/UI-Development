@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #value{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size:100px" id="value">0</h1>
+        <button onclick="inc()">Increment</button>
+        <button onclick="dec()">Decrement</button>
+    </div>
+    <script>
+        
+        // function inc(){
+        //     let value=Number(document.getElementById("value").innerText)
+        //     document.getElementById("value").innerText=value+1
+
+            
+        // }
+        // function dec(){
+        //     let value=Number(document.getElementById("value").innerText)
+        //     document.getElementById("value").innerText=value-1
+        // }
+
+        // function inc(){
+        //     let fontsizeValue=document.getElementById('value').style.fontSize
+        //     document.getElementById("value").innerText=fontsizeValue
+        // }
+        function inc(){
+            let fontSizeValue=document.getElementById('value').style.fontSize
+            console.log(fontSize)
+            // fontSizeValue.style.fontSize = fontSizeValue*2
+        }
+    </script>
+</body>
+</html>

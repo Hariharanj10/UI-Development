@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    #header{
+        font-size:50px;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1 id="header">hello world</h1>
+        <button onclick="incFont()">IncreaseFont</button>
+        <button onclick="decFont()">DecreaseFont</button>
+    </div>
+    <script>
+        let header=document.getElementById("header")
+        let fontValue = window.getComputedStyle(header).fontSize
+        function incFont(){
+            let fontsizeValue=parseInt(getComputedStyle(header).fontSize.substr(0,2))
+            fontsizeValue = fontsizeValue+10;
+            document.getElementById("header").style.fontSize =  fontsizeValue+"px"
+        }
+        function decFont(){
+
+            let fontsizeValue=parseInt(getComputedStyle(header).fontSize.substr(0,2))
+            if(fontsizeValue ===10){
+                alert("This is the last limit")
+            }else{
+            fontsizeValue = fontsizeValue-10
+            document.getElementById("header").style.fontSize =  fontsizeValue+"px"
+            }
+        }
+    </script>
+</body>
+</html>
