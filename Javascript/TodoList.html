@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList</title>
+  </head>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      gap: 15px;
+    }
+    .list-items{
+        display:flex;
+        gap:150px;
+    }
+    input{
+        width:30vw;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Todo-List</h1>
+      <div class="values">
+        <input
+          type="text"
+          placeholder="Enter the value"
+          id="text-value"
+          required
+        />
+      </div>
+      <div class="btns">
+        <button id="add">Add</button>
+        <button id="delete" >Delete</button>
+      </div>
+      <div class="items">
+        <ul id="list-items"></ul>
+      </div>
+    </div>
+    <script>
+
+      let addbtn = document.getElementById("add");
+      let count=0;
+      addbtn.addEventListener("click", function () {
+        let value = document.getElementById("text-value").value;
+        if (value != "") {
+          let crtEmt = document.createElement("li");
+          crtEmt.id="list-"+count
+
+          let btn=document.createElement("button")
+          btn.className="delete-list-btn"
+          btn.innerText="Remove"
+          btn.id="delete-btn"+count 
+
+          let i=btn.id;
+          let i2=crtEmt.id
+          let textValue = document.createTextNode(value);
+          crtEmt.appendChild(textValue);
+          crtEmt.appendChild(btn);
+          count++
+          document.getElementById("list-items").appendChild(crtEmt);
+          btn.onclick=clickevent.bind(i2)
+        } else {
+          alert("Please enter a value ");
+        }
+      });
+      function clickevent(i2){
+      
+        let idvalue=i2.target.id
+        let x=document.getElementById(idvalue)
+        var b=x.parentNode
+        b.remove()
+      }
+      
+    
+      let deletebtn = document.getElementById("delete");
+      deletebtn.addEventListener("click", function () {
+        if (
+          document.getElementById("list-items").getElementsByTagName("li")
+            .length >= 1
+        ) {
+          var ul = document.querySelector("#list-items");
+          var li = ul.firstElementChild;
+          ul.removeChild(li);
+        } else {
+          alert("list is empty");
+        }
+      });
+    </script>
+  </body>
+</html>
