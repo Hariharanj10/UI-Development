@@ -1,0 +1,27 @@
+<html>
+<body>
+
+<h2>JavaScript Regular Expressions</h2>
+
+
+<p id="demo"></p>
+
+<script>
+// let text = "Is this all there is?";
+// let pattern = /[h]/g;
+// let pattern = /[^i]/g;
+// let result = text.match(pattern);
+// let text = "re, green, red, green, gren, gr, blue, yellow";
+// let pattern = /(red|green)/g;
+// let result = text.match(pattern);
+let text = "100, 1000 or 10000?";
+let pattern = /\d{4}/g;
+let result = text.match(pattern);
+// let text = "100, 1000 or 10000?";
+// let pattern = /\d{3,4}/g;
+
+document.getElementById("demo").innerHTML = result;
+</script>
+
+</body>
+</html>
