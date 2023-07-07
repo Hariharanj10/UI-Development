@@ -1,105 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
-</head>
-<style>
-    body{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    .container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height:100vh;
-    }
-    #para-username{
-        display: none;
-    }
-    #para-password{
-        display: none;
-    }
-    .container input{
-        display: block;
-        margin: 20px;
-        width:30vw;
-        height:5vh;
-    }
-    #submit-button{
-        width:100px;
-        margin-left:20px;
-        border-radius: 20px;
-        border:none;
-        height:40px;
-        text-transform: uppercase;
-    }
-    .container input:focus{
-        outline:none;
-    }
-    .container input::placeholder{
-        padding-left:20px;
-    }
-    input{
-        padding-left:40px;
+    <link rel="stylesheet" href="FormValidation.css" />
+  </head>
 
-    }
-</style>
-<body>
+  <body>
     <div class="container">
+      <div class="form-container">
         <form action="" name="myForm">
-            <input type="email" name="userName" id="user-name" onkeydown="test(this.value)" placeholder="Enter your Username" required>
-            <p id="para-username">Username is invalid</p>
-            <input type="password" name="password" id="password" onkeydown="testPassword(this.value)" placeholder="Enter your Password" required>
-            <p id="para-password">Password is invalid</p>
-            <button id="submit-button">submit</button>
+          <input
+            type="email"
+            name="userName"
+            id="user-name"
+            onkeydown="test(this.value)"
+            placeholder="Enter your Username"
+            required
+          />
+          <p id="para-username">Username is invalid</p>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            onkeydown="testPassword(this.value)"
+            placeholder="Enter your Password"
+            required
+          />
+          <p id="para-password">Password is invalid</p>
+          <button id="submit-button">submit</button>
         </form>
+      </div>
     </div>
-    <script>
-        let userName=document.getElementById("user-name")
-        let password=document.getElementById("password")
-        let paraUsername=document.getElementById("para-username")
-        let paraPassword=document.getElementById("para-password")
-        var flag=false
-        function test(value){
-            let emailValue =value;
-            let emailPattern =/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/g
-            if(!emailPattern.test(emailValue)){
-                paraUsername.style.display="block"
-                flag=false
-            }else{
-                paraUsername.style.display="none"
-                flag=true
-            }
-        }
-        var flag1=false
-        function testPassword(value){
-            let pwdValue=value
-            let pwdPattern =/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-            if(!pwdPattern.test(pwdValue)){
-                paraPassword.style.display="block"
-                flag1=false
-            }else{
-                paraPassword.style.display="none" 
-                flag1=true
-            }
-        }
-    
-        let btn=document.getElementById("submit-button")
-        btn.addEventListener("click",function(e){
-           
-            if(flag && flag1){
-                console.log("valid")
-            }else{
-                e.preventDefault()
-                console.log("not valid")
-            }
-        })
-       
-    </script>
-</body>
+    <script src="FormValidation.js"></script>
+  </body>
 </html>

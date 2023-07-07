@@ -4,59 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TodoList</title>
+    <link rel="stylesheet" href="TodoList.css" />
   </head>
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
-      gap: 15px;
-    }
-    .list-items{
-        display:flex;
-        gap:150px;
-    }
-    input{
-        width:30vw;
-        height: 40px;
-        outline:none;
-        border:none;
-    }
-    input::placeholder{
-      padding-left: 50px;
-    }
-    input:focus{
-      border:none;
-      outline: none;
-      padding-left:50px;
-    }
-    .container{
-      background-color: antiquewhite;
-    }
-    .delete-list-btn{
-      margin:10px;
-      padding:10px;
-      width:5vw;
-    }
-    ul li{
-      list-style-type: disc;
-    }
-    li{
-      border:2px solid #000000;
-      width:70vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap:15;
-      margin:20px;
-      padding:20px;
-    }
-
-   
-  </style>
+  >
   <body>
     <div class="container">
       <h1>Todo-List</h1>
@@ -70,61 +20,12 @@
       </div>
       <div class="btns">
         <button id="add">Add</button>
-        <button id="delete" >Delete</button>
+        <button id="delete">Delete</button>
       </div>
       <div class="items">
         <ul id="list-items"></ul>
       </div>
     </div>
-    <script>
-
-      let addbtn = document.getElementById("add");
-      let index=0;
-      addbtn.addEventListener("click", function () {
-        let value = document.getElementById("text-value").value;
-        if (value != "") {
-          let crtEmt = document.createElement("li");
-          crtEmt.id="list-"+index
-
-          let btn=document.createElement("button")
-          btn.className="delete-list-btn"
-          btn.innerText="Remove"
-          btn.id="delete-btn"+index
-
-          let i=btn.id;
-          let i2=crtEmt.id
-          let textValue = document.createTextNode(value);
-          crtEmt.appendChild(textValue);
-          crtEmt.appendChild(btn);
-          index++
-          document.getElementById("list-items").appendChild(crtEmt);
-          btn.onclick=clickevent.bind(i2)
-        } else {
-          alert("Please enter a value ");
-        }
-      });
-      function clickevent(i2){
-      
-        let idvalue=i2.target.id
-        let x=document.getElementById(idvalue)
-        var b=x.parentNode
-        b.remove()
-      }
-      
-    
-      let deletebtn = document.getElementById("delete");
-      deletebtn.addEventListener("click", function () {
-        if (
-          document.getElementById("list-items").getElementsByTagName("li")
-            .length >= 1
-        ) {
-          var ul = document.querySelector("#list-items");
-          var li = ul.firstElementChild;
-          ul.removeChild(li);
-        } else {
-          alert("list is empty");
-        }
-      });
-    </script>
+    <script src="TodoList.js"></script>
   </body>
 </html>
