@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container{
+        display: flex;
+        flex-direction: row;
+        width:100vw;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:50%;
+        height: auto;
+        gap:30px;
+        margin:10px 10px;
+        padding: 10px 10px;
+        border:2px solid #000000;
+        >img{
+            width:200px;
+            text-align: center;
+        }
+        >p{
+            height: 100px;
+            text-align: center;
+        }
+    }
+</style>
+<body>
+    <div id="container">
+
+
+    </div>
+    <script>
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json => showData(json))
+        function showData(res){
+            let container =document.getElementById("container")
+            for(let i=0;i<res.length;i++){
+                let divEle=document.createElement("div")
+                divEle.className = 'box'
+                let img=document.createElement("img")
+                img.src=res[i].image
+                img.style.height="300px"
+                let heading=document.createElement("h4")
+                heading.innerHtml=res[i].title
+                let para=document.createElement("p")
+                para.innerText=res[i].description
+                divEle.append(img)
+                divEle.append(heading)
+                divEle.append(para)
+                container.appendChild(divEle)
+            }
+        }
+    </script>
+</body>
+</html>

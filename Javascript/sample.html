@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+
+    </div>
+    <script>
+    //   fetch("https://fakestoreapi.com/products")
+    //     .then((res) => res.json())
+    //     .then(data=>{
+    //         var content=''
+    //         data.map(dta=>{
+    //             content+=`<ul>
+    //         <li>${dta.id}</li>
+    //     </ul>`
+    //         })
+    //         document.getElementById('container').innerHTML=content
+    //     })
+    // fetch('https://fakestoreapi.com/products')
+    //         .then(res=>res.json())
+    //         .then(res=>showData(res))
+    // function showData(res){
+    //     for(let i=0;i<res.length;i++){
+    //         let ref=document.getElementById("container")
+    //         let ele =document.createElement("p")
+    //         ele.innerHTML=res[i].id 
+    //         let heading=document.createElement("h")
+    //         ref.appendChild(ele)
+    //     }
+
+    // }
+
+
+    // fetch('https://fakestoreapi.com/products/1')
+    //         .then(res=>res.json())
+    //         .then(json=>console.log(json))
+
+    // fetch("https://fakestoreapi.com/carts",{
+    //     method:"POST",
+    //     body:JSON.stringify(
+    //             {
+    //                 userId:5,
+    //                 products:[{productId:5,quantity:1},{productId:1,quantity:5}]
+    //             }
+    //     )
+    // })
+    fetch('https://fakestoreapi.com/carts/6',{
+            method:"DELETE"
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+    </script>
+  </body>
+</html>
