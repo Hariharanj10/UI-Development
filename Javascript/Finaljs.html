@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing page</title>
+</head>
+<style>
+    #main-header{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #main{
+        display: flex;
+    }
+    #side-bar{
+        display: flex;
+        flex-direction: column;
+        width:20vw;
+    }
+    #main-header{
+        display: flex;
+        flex-direction: column;
+        width:80vw;
+    }
+    #head-header{
+        display: flex;
+        justify-content: center;
+    }
+    #head-header h4{
+        margin:20px;
+        padding:20px;
+    }
+    .row-display,.row-display-todo{
+        display: flex;
+        border:2px solid grey;
+        height:50px;
+    }
+    .row-display-todos {
+        border:2px solid grey;
+        height:50px;
+        width:80vw;
+        
+    }
+    .row-display-todos p{
+        justify-content: space-between;
+        align-items: center;
+        text-overflow: ellipsis;
+        gap:30px;
+        width:20vw;
+        font-size: 8px;
+    }
+    .row-display button{
+        display: flex;
+        justify-content: flex-end;
+    }
+    #table{
+        display: flex;
+    }
+    .row-display p{
+        justify-content: space-between;
+        align-items: center;
+        text-overflow: ellipsis;
+        gap:30px;
+        width:20vw;
+        font-size: 8px;
+    }
+    .row-display button{
+        height: 30px;
+        margin:10px;
+    }
+    #post{
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+<body>
+    <div id="container">
+        <div id="header">
+            <span>Gmail</span>
+            <span><input type="search"></span>
+        </div>
+        <div id="main">
+            <div id="side-bar">
+                <button>compose</button>
+            </div>
+            <div id="main-header">
+                <div id="head-header">
+                    <div><h4  id="posts-head" onclick="showPost()">Posts</h4></div>
+                    <div><h4  onclick=todoCall() id="tudos-head">Todos</h4></div>
+                    <div><h4 onclick="usersCall()"  id="users-head">Users</h4></div>
+                </div>
+                <div id="table">
+                    <div id="post">
+    
+                    </div>
+                    <div id="todos">
+    
+                    </div>
+                    <div id="users">
+    
+                    </div>
+                </div>
+                
+            </div>
+            
+
+            
+        </div>
+        
+    </div>
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((res) => res.json())
+        .then((res)=>submitData(res))
+        .catch(error => console.log('error',error))
+    let dataArr =[]
+    function submitData(data){
+        data.map((item)=>{
+            let obj={
+              body:item.body,
+              userId:item.userId,
+              title:item.title,
+              id:item.id   
+            }
+            dataArr.push(obj)
+        })
+        displayData(dataArr)
+    }
+    function displayData(data){
+        let index=0;
+        let post =document.getElementById("post")
+        post.style.display="flex"
+       
+        for(let i=0;i<data.length;i++){
+            let divCon =document.createElement("div")
+            divCon.className="row-display"
+            divCon.id=data[i].id
+            
+            let body=document.createElement("p")
+            body.innerText=data[i].body
+            
+            let userId=document.createElement("p")
+            userId.innerText=data[i].userId
+
+            let title=document.createElement("p")
+            title.innerText=data[i].title
+
+            let dleBtn =document.createElement("button")
+            dleBtn.innerText="delete"
+            dleBtn.addEventListener("click",()=>{
+                getId(data[i])
+            })
+
+
+            let edtBtn =document.createElement("button")
+            edtBtn.innerText="Edit"
+            edtBtn.addEventListener("click",()=>{
+                getUpdatePost(data[i])
+            })
+
+
+            divCon.append(body,userId,title,dleBtn,edtBtn)
+            post.appendChild(divCon)
+        }
+    } 
+
+     let todoArr=[]
+     function todoCall(){
+       
+        fetch('https://jsonplaceholder.typicode.com/todos')
+        .then((res)=>res.json())
+        .then((res) => submitTudo(res))
+        .catch(error => console.log('error',error))
+     }
+     function submitTudo(data){
+        data.map((item)=>{
+            let obj2={
+              userId:item?.userId,
+              id:item?.id,
+              title:item?.title,
+              completed:item?.completed   
+            }
+            todoArr.push(obj2)
+        })
+        todoShow(todoArr)
+    }
+
+     function todoShow(data){
+        let todos=document.getElementById("todos")
+        todos.style.display="flex"
+        todos.style.flexDirection="column"
+        let post=document.getElementById("post").style.display="none"
+        let users=document.getElementById("users").style.display="none"
+        for(let i=0;i<data.length;i++){
+            let divCon =document.createElement("div")
+            divCon.className="row-display-todos"
+            divCon.id="todo-"+data[i].id
+
+            let completed=document.createElement("p")
+            completed.innerText=data[i].completed
+            
+            let userId=document.createElement("p")
+            userId.innerText=data[i].userId
+
+            let title=document.createElement("p")
+            title.innerText=data[i].title
+
+            let dleBtn =document.createElement("button")
+            dleBtn.innerText="delete"
+            dleBtn.addEventListener("click",()=>{
+                getTodoId(data[i])
+            })
+
+
+
+            let edtBtn =document.createElement("button")
+            edtBtn.innerText="Edit"
+            edtBtn.addEventListener("click",()=>{
+                getUpdateTodo(data[i])
+            })
+
+            divCon.append(userId,title,completed,dleBtn,edtBtn)
+            todos.appendChild(divCon)
+        }
+        
+     }
+
+     function usersCall(){
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then((res)=>res.json())
+        .then((res) => submitUser(res))
+        .catch(error => console.log('error',error))
+     }
+     let usersArr=[]
+     function submitUser(data){
+        data.map((item)=>{
+            let obj={
+              userName:item.username,
+              id:item.id,
+              name:item.name,
+              company:{
+                name:item.company.name
+              }
+            }
+            usersArr.push(obj)
+        })
+        usersShow(usersArr)
+    }
+     
+     function usersShow(data){
+        let index=0;
+        let todos=document.getElementById("todos").style.display="none"
+        let post=document.getElementById("post").style.display="none"
+        let users=document.getElementById("users")
+        users.style.display="flex"
+        users.style.flexDirection="column"
+        for(let i=0;i<data.length;i++){
+            let divCon =document.createElement("div")
+            divCon.className="row-display-users"
+            divCon.id="users-"+data[i].id
+            
+            let name=document.createElement("p")
+            name.innerText=data[i].name
+            
+            let userName=document.createElement("p")
+            userName.innerText=data[i].username
+
+            let company=document.createElement("p")
+            company.innerText=data[i].company.name
+
+            let dleBtn =document.createElement("button")
+            dleBtn.innerText="delete"
+            dleBtn.addEventListener("click",()=>{
+                getUserId(data[i])
+            })
+
+
+
+            let edtBtn =document.createElement("button")
+            edtBtn.innerText="Edit"
+            edtBtn.addEventListener("click",()=>{
+                getUpdateUserId(data[i])
+            })
+
+            divCon.append(name,userName,company,dleBtn,edtBtn)
+            users.appendChild(divCon)
+        }
+    }
+    function showPost(){
+        let todos=document.getElementById("todos").style.display="none"
+        let users=document.getElementById("users").style.display="none"
+        let post =document.getElementById("post")
+        post.style.display="flex"
+
+    }
+    function getId(data){
+        let id=data.id
+        fetch('https://fakestoreapi.com/products/'+id,{
+            method:"DELETE"
+        }).then(
+            (res)=>{
+                console.log(res.status,data.id)
+                if(res.status == 200){
+                let index=dataArr.indexOf(data)
+                 dataArr.splice(index,1)
+                let rem=document.getElementById(data.id)
+                rem.remove()
+                alert("deleted")
+                }
+            }
+
+        )
+                    
+                
+        
+    }
+    function getTodoId(data){
+        let index=tudoArr.indexOf(data)
+        tudoArr.splice(index,1)
+        let rem=document.getElementById("tudo-"+data.id)
+        rem.remove()
+        alert("deleted")
+    }
+    function getUserId(data){
+        let index=usersArr.indexOf(data)
+        usersArr.splice(index,1)
+        let rem=document.getElementById("todo-"+data.id)
+        rem.remove()
+        alert("deleted")
+    }
+    function getUpdateTodo(data){
+    
+    }
+    function  getUpdatePost(data){
+        
+    }
+
+    function   getUpdateUserId(data){
+
+    }
+    </script>
+</body>
+</html>

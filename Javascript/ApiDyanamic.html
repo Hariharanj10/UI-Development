@@ -58,7 +58,7 @@
         });
         displayData(dataArr);
       }
-
+      
       function displayData(data) {
         let index=0;
         let container = document.getElementById("container");
@@ -77,7 +77,6 @@
           let btn=document.createElement("button")
           btn.innerText="remove"
           btn.addEventListener("click",()=>{
-            console.log('i',i);
             getid(boxContainer.id,data[i])
             console.log(data[i].id)
           })
@@ -91,9 +90,19 @@
       }
       let newArr=[]
       function getid(id,data){
-        
+        // newArr=[dataArr?.filter(item=>item?.id !==data?.id)]
+        // dataArr =[...newArr]
+        let index=dataArr.indexOf(data)
+        dataArr.splice(index,1)
+        console.log(dataArr)
+        displayData(dataArr)
+        fetch('https://fakestoreapi.com/products/6',{
+            method:"DELETE"
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+            
         document.getElementById(id).remove()
-        
         }
     </script>
   </body>
