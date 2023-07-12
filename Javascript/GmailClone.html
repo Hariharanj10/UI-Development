@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gmail</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family:"Poppins";
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 97%;
+        height: 80px;
+        background-color: #f8f9fa;
+        padding: 10px 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      #header span {
+        font-size: 30px;
+        font-weight: bold;
+        color: #202124;
+      }
+      #header input[type="search"] {
+        padding: 6px;
+        font-size: 14px;
+        width: 400px;
+        border: none;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+      #header input[type="search"]:focus {
+        outline: none;
+      }
+      #header input[type="search"]::placeholder {
+        padding: 30px;
+      }
+      #top-nav {
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+      }
+      #top-nav i {
+        margin-right: 8px;
+        color: #5f6368;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+      #top-nav i:hover {
+        color: #202124;
+      }
+      #main {
+        display: flex;
+        width: 100%;
+      }
+      #side-bar {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        background-color: #fff;
+        padding: 20px;
+        /* border-right: 1px solid #ddd; */
+      }
+      #side-bar button:not(#compose-btn) {
+        padding: 10px;
+        font-size: 14px;
+        /* font-weight: bold; */
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #5f6368;
+        transition: background-color 0.3s;
+      }
+      #side-bar button i {
+        margin-right: 8px;
+      }
+      /* #side-bar span:hover {
+        background-color: green;
+      } */
+      #main-header {
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      #head-header {
+        display: flex;
+        justify-content: center;
+      }
+      #head-header h4 {
+        margin: 10px;
+        padding: 10px;
+        cursor: pointer;
+        color: #5f6368;
+        transition: color 0.3s;
+      }
+      #head-header h4:hover {
+        color: #202124;
+      }
+      .table-container {
+        padding: 10px;
+        width: 100%;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .table th,
+      .table td {
+        /* border: 1px solid #ccc; */
+        padding: 8px;
+      }
+      .table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+        text-align: left;
+        color: #202124;
+      }
+      .table tr:hover {
+        background-color: #f1f3f4;
+      }
+      .table .button-cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+      }
+      .button-cell button {
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        border: none;
+        background-color: lightcoral;
+        color: black;
+        cursor: pointer;
+        transition: color 0.3s;
+        outline: none;
+      }
+      .button-cell-edit {
+        text-align: center;
+      }
+      .button-cell {
+        display: flex;
+        align-items: center;
+      }
+      .button-cell-1 button {
+        color: #202124;
+        background-color: lightcoral;
+        outline: none;
+        border: none;
+        height: 25px;
+      }
+      .button-cell-edit button {
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        border: none;
+        background-color: wheat;
+        color: black;
+        cursor: pointer;
+        transition: color 0.3s;
+        outline: none;
+      }
+      .button-cell button:hover {
+        color: #202124;
+      }
+      .edit-form {
+        display: flex;
+        align-items: center;
+      }
+      .edit-form input[type="text"] {
+        font-size: 14px;
+        width: 100%;
+      }
+      td.button-cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      #top-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+      }
+      #compose-btn {
+        background-color: lightblue;
+        width: 150px;
+        height: 40px;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+      }
+      #posts-head:hover,
+      #todos-head:hover,
+      #users-head:hover {
+        border-bottom: 5px solid lightblue;
+        border-radius: 3px;
+        transition: border 0.3s;
+      }
+      #compose-con {
+        height: 80px;
+      }
+      #side-bar span {
+        margin-left: 20px;
+        color: #202124;
+        font-size: 14px;
+        font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial,
+          sans-serif;
+        font-size: 0.875rem;
+        letter-spacing: normal;
+        color: #202124;
+        text-shadow: none;
+      }
+      #side-bar{
+        >button:hover{
+            background-color: yellow;
+        }
+       
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <span
+          ><img
+            class="gb_Mc"
+            src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png"
+            srcset="
+              https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png 1x,
+              https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_2x_r5.png 2x
+            "
+            alt=""
+            aria-hidden="true"
+            role="presentation"
+            style="width: 109px; height: 40px"
+          />
+        </span>
+        <input type="search" placeholder="Search" />
+        <div id="top-nav">
+          <i class="far fa-bell"></i>
+          <i class="fas fa-caret-down"></i>
+          <i class="fab fa-google"></i>
+          <i class="fas fa-th"></i>
+        </div>
+      </div>
+      <div id="main">
+        <div id="side-bar">
+          <div id="compose-con">
+            <button id="compose-btn">
+              <i class="fas fa-edit"></i>&nbsp Compose
+            </button>
+          </div>
+          <button>
+            <span><i class="fas fa-inbox"></i></span> <span>Inbox</span>
+          </button>
+          <button>
+            <span><i class="far fa-star"></i> </span><span> Starred</span>
+          </button>
+          <button>
+            <span><i class="fas fa-paper-plane"></i></span><span> Sent</span>
+          </button>
+          <button>
+            <span><i class="fas fa-file-alt"></i></span><span> Drafts</span>
+          </button>
+          <button>
+            <span><i class="far fa-clock"></i></span><span> Scheduled</span>
+          </button>
+          <button>
+            <span><i class="fas fa-exclamation-circle"></i></span
+            ><span>Spam</span>
+          </button>
+          <button>
+            <span><i class="fas fa-trash"></i></span><span> Trash</span>
+          </button>
+          <button>
+            <span><i class="fas fa-cog"></i></span><span> Settings</span>
+          </button>
+        </div>
+        <div id="main-header">
+          <div id="head-header">
+            <div>
+              <h4 id="posts-head" onclick="showPosts()">
+                <i class="fas fa-file-alt"></i> Posts
+              </h4>
+            </div>
+            <div>
+              <h4 id="todos-head" onclick="showTodos()">
+                <i class="fas fa-check-square"></i> Todos
+              </h4>
+            </div>
+            <div>
+              <h4 id="users-head" onclick="showUsers()">
+                <i class="fas fa-users"></i> Users
+              </h4>
+            </div>
+          </div>
+          <div id="table-container">
+            <table id="table" class="table"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+      const API_URL = "https://jsonplaceholder.typicode.com";
+      document.addEventListener("DOMContentLoaded", () => {
+        showPosts();
+      });
+      // Show Posts
+      function showPosts() {
+        clearTable();
+        fetch(`${API_URL}/posts`)
+          .then((res) => res.json())
+          .then((data) => displayData(data))
+          .catch((error) => console.log(" server error ", error));
+      }
+      // Show Todos
+      function showTodos() {
+        clearTable();
+        fetch(`${API_URL}/todos`)
+          .then((res) => res.json())
+          .then((data) => displayTodos(data))
+          .catch((error) => console.log("server error", error));
+      }
+      // Show Users
+      function showUsers() {
+        clearTable();
+        fetch(`${API_URL}/users`)
+          .then((res) => res.json())
+          .then((data) => displayUsers(data))
+          .catch((error) => console.log("server error", error));
+      }
+      // Clear table
+      function clearTable() {
+        const tableContainer = document.getElementById("table-container");
+        tableContainer.innerHTML = "";
+      }
+      // Display Posts
+      function displayData(data) {
+        const tableContainer = document.getElementById("table-container");
+        const table = document.createElement("table");
+        table.className = "table";
+        const tableHeader = document.createElement("tr");
+        tableHeader.className = "row-display";
+        tableHeader.innerHTML = `
+    <th>Body</th>
+    <th>User ID</th>
+    <th>Title</th>
+    <th>Delete</th>
+    <th>Edit</th>
+  `;
+        table.appendChild(tableHeader);
+        data.forEach((item) => {
+          const row = document.createElement("tr");
+          row.className = "row-display";
+          row.id = item.id;
+          const bodyCell = document.createElement("td");
+          bodyCell.innerText = item.body;
+          const userIdCell = document.createElement("td");
+          userIdCell.innerText = item.userId;
+          const titleCell = document.createElement("td");
+          titleCell.innerText = item.title;
+          const deleteBtnCell = document.createElement("td");
+          deleteBtnCell.className = "button-cell-1";
+          const deleteBtn = document.createElement("button");
+          deleteBtn.innerText = "Delete";
+          deleteBtn.addEventListener("click", () => {
+            deletePost(item.id);
+          });
+          deleteBtnCell.appendChild(deleteBtn);
+          const editBtnCell = document.createElement("td");
+          editBtnCell.className = "button-cell-edit";
+          const editBtn = document.createElement("button");
+          editBtn.innerText = "Edit";
+          editBtn.addEventListener("click", () => {
+            showEditForm(item);
+          });
+          editBtnCell.appendChild(editBtn);
+          row.appendChild(bodyCell);
+          row.appendChild(userIdCell);
+          row.appendChild(titleCell);
+          row.appendChild(deleteBtnCell);
+          row.appendChild(editBtnCell);
+          table.appendChild(row);
+        });
+        tableContainer.appendChild(table);
+      }
+      // Display Todos
+      function displayTodos(data) {
+        const tableContainer = document.getElementById("table-container");
+        const table = document.createElement("table");
+        table.className = "table";
+        const tableHeader = document.createElement("tr");
+        tableHeader.className = "row-display";
+        tableHeader.innerHTML = `
+    <th>User ID</th>
+    <th>Title</th>
+    <th>Completed</th>
+    <th>Delete</th>
+  `;
+        table.appendChild(tableHeader);
+        data.forEach((item) => {
+          const row = document.createElement("tr");
+          row.className = "row-display";
+          row.id = "todo-" + item.id;
+          const userIdCell = document.createElement("td");
+          userIdCell.innerText = item.userId;
+          const titleCell = document.createElement("td");
+          titleCell.innerText = item.title;
+          const completedCell = document.createElement("td");
+          completedCell.innerText = item.completed;
+          const deleteBtnCell = document.createElement("td");
+          deleteBtnCell.className = "button-cell";
+          const deleteBtn = document.createElement("button");
+          deleteBtn.innerText = "Delete";
+          deleteBtn.addEventListener("click", () => {
+            deleteTodo(item.id);
+          });
+          deleteBtnCell.appendChild(deleteBtn);
+          row.appendChild(userIdCell);
+          row.appendChild(titleCell);
+          row.appendChild(completedCell);
+          row.appendChild(deleteBtnCell);
+          table.appendChild(row);
+        });
+        tableContainer.appendChild(table);
+      }
+      // Display Users
+      function displayUsers(data) {
+        const tableContainer = document.getElementById("table-container");
+        const table = document.createElement("table");
+        table.className = "table";
+        const tableHeader = document.createElement("tr");
+        tableHeader.className = "row-display";
+        tableHeader.innerHTML = `
+    <th>Name</th>
+    <th>Username</th>
+    <th>Company</th>
+    <th>Delete</th>
+    <th>Edit</th>
+  `;
+        table.appendChild(tableHeader);
+        data.forEach((item) => {
+          const row = document.createElement("tr");
+          row.className = "row-display";
+          row.id = "users-" + item.id;
+          const nameCell = document.createElement("td");
+          nameCell.innerText = item.name;
+          const usernameCell = document.createElement("td");
+          usernameCell.innerText = item.username;
+          const companyCell = document.createElement("td");
+          companyCell.innerText = item.company.name;
+          const deleteBtnCell = document.createElement("td");
+          deleteBtnCell.className = "button-cell";
+          const deleteBtn = document.createElement("button");
+          deleteBtn.innerText = "Delete";
+          deleteBtn.addEventListener("click", () => {
+            deleteUser(item.id);
+          });
+          deleteBtnCell.appendChild(deleteBtn);
+          const editBtnCell = document.createElement("td");
+          editBtnCell.className = "button-cell-edit";
+          const editBtn = document.createElement("button");
+          editBtn.innerText = "Edit";
+          editBtn.addEventListener("click", () => {
+            showEditForm(item);
+          });
+          editBtnCell.appendChild(editBtn);
+          row.appendChild(nameCell);
+          row.appendChild(usernameCell);
+          row.appendChild(companyCell);
+          row.appendChild(deleteBtnCell);
+          row.appendChild(editBtnCell);
+          table.appendChild(row);
+        });
+        tableContainer.appendChild(table);
+      }
+      // Delete Post
+      function deletePost(id) {
+        fetch(`${API_URL}/posts/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            if (res.ok) {
+              const row = document.getElementById(id);
+              row.remove();
+              alert("Post deleted successfully.");
+            } else {
+              throw new Error("Failed to delete post.");
+            }
+          })
+          .catch((error) => console.log("Error:", error));
+      }
+      // Delete Todo
+      function deleteTodo(id) {
+        fetch(`${API_URL}/todos/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            if (res.ok) {
+              const row = document.getElementById("todo-" + id);
+              row.remove();
+              alert("Todo deleted successfully.");
+            } else {
+              throw new Error("Failed to delete todo.");
+            }
+          })
+          .catch((error) => console.log("Error:", error));
+      }
+      // Delete User
+      function deleteUser(id) {
+        fetch(`${API_URL}/users/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            if (res.ok) {
+              const row = document.getElementById("users-" + id);
+              row.remove();
+              alert("User deleted successfully.");
+            } else {
+              throw new Error("Failed to delete user.");
+            }
+          })
+          .catch((error) => console.log("Error:", error));
+      }
+      // Show Edit Form
+      function showEditForm(item) {
+        const editForm = document.createElement("div");
+        editForm.className = "edit-form";
+        const input = document.createElement("input");
+        input.type = "text";
+        input.value = item.title;
+        editForm.appendChild(input);
+        const saveBtn = document.createElement("button");
+        saveBtn.innerText = "Save";
+        saveBtn.addEventListener("click", () => {
+          saveChanges(item.id, input.value, item);
+        });
+        editForm.appendChild(saveBtn);
+
+        const row = document.getElementById(item.id);
+        row.innerHTML = "";
+        row.appendChild(editForm);
+      }
+      // Save Changes
+      function saveChanges(id, value, item) {
+        const row = document.getElementById(id);
+        const editForm = row.querySelector(".edit-form");
+        const input = editForm.querySelector("input");
+        row.innerHTML = `<td>${input.value}</td>${id}<td>${item.title}</td>${item.button}<td></td>`;
+      }
+    </script>
+  </body>
+</html>
