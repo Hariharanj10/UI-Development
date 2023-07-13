@@ -62,15 +62,21 @@
         display: flex;
         align-items: center;
         font-size: 25px;
+        >svg{
+          color: #202124;
+        cursor: pointer;
+        }
       }
       #top-nav i {
         margin-right: 8px;
         color: #5f6368;
         cursor: pointer;
         transition: color 0.3s;
+      
       }
       #top-nav i:hover {
         color: #202124;
+        cursor: pointer;
       }
       #main {
         display: flex;
@@ -82,12 +88,10 @@
         width: 20%;
         background-color: #fff;
         padding: 20px;
-        /* border-right: 1px solid #ddd; */
       }
       #side-bar button:not(#compose-btn) {
         padding: 10px;
         font-size: 14px;
-        /* font-weight: bold; */
         border: none;
         background-color: transparent;
         cursor: pointer;
@@ -99,9 +103,10 @@
       #side-bar button i {
         margin-right: 8px;
       }
-      /* #side-bar span:hover {
-        background-color: green;
-      } */
+      #side-bar .side-bar-button:hover {
+          background-color: green;
+          width:100%;
+      }
       #main-header {
         display: flex;
         flex-direction: column;
@@ -136,7 +141,6 @@
       }
       .table th,
       .table td {
-        /* border: 1px solid #ccc; */
         padding: 8px;
       }
       .table th {
@@ -222,6 +226,9 @@
         border: none;
         border-radius: 10px;
       }
+      #compose-btn:hover{
+        cursor: pointer;
+      }
       #posts-head:hover,
       #todos-head:hover,
       #users-head:hover {
@@ -248,6 +255,9 @@
             background-color: yellow;
         }
        
+      }
+      button.side-bar-button:hover{
+          background-color: yellow;
       }
     </style>
   </head>
@@ -283,29 +293,29 @@
               <i class="fas fa-edit"></i>&nbsp Compose
             </button>
           </div>
-          <button>
+          <button class="side-bar-button">
             <span><i class="fas fa-inbox"></i></span> <span>Inbox</span>
           </button>
-          <button>
+          <button class="side-bar-button">
             <span><i class="far fa-star"></i> </span><span> Starred</span>
           </button>
-          <button>
+          <button class="side-bar-button">
             <span><i class="fas fa-paper-plane"></i></span><span> Sent</span>
           </button>
-          <button>
+          <button class="side-bar-button">
             <span><i class="fas fa-file-alt"></i></span><span> Drafts</span>
           </button>
-          <button>
+          <button class="side-bar-button">
             <span><i class="far fa-clock"></i></span><span> Scheduled</span>
           </button>
-          <button>
+          <button class="side-bar-button">
             <span><i class="fas fa-exclamation-circle"></i></span
             ><span>Spam</span>
           </button>
-          <button>
+          <button class="side-bar-button">
             <span><i class="fas fa-trash"></i></span><span> Trash</span>
           </button>
-          <button>
+          <button class="side-bar-button">
             <span><i class="fas fa-cog"></i></span><span> Settings</span>
           </button>
         </div>

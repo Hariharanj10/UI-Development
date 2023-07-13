@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <select name="" id="select-id" onchange="fun(this.value)"></select>
+    </div>
+    <script>
+      let petImage =[
+    {name:'dog',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtJa8QMPLPTspe5OYUdPeQVm67YYFE6mEdRFPVF7h37A&s'},
+      {name:'chicken',
+      image:'https://images.unsplash.com/photo-1612170153139-6f881ff067e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80 '},
+      {name:'cat',image:'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'}]
+      
+
+
+      var pets = ["dog", "chicken", "cat", "dog", "bird", "goat", "rabbit"];
+      let container = document.getElementById("select-id");
+      pets.map((item) => {
+        let ele = document.createElement("option");
+        let optText = document.createTextNode(item);
+        ele.appendChild(optText);
+        container.appendChild(ele);
+      });
+      let findValue = document.getElementById("select-id")
+      let con =document.getElementById("container")
+      function fun(e){
+        let value=e
+        console.log(e)
+        let image =document.createElement("img")
+        let source=petImage.filter(item => item.name == value)
+        console.log(source[0])
+        image.src=source[0].image
+        con.appendChild(image)
+        image.style.height="100px"
+        image.style.width="300px"
+      }
+    </script>
+  </body>
+</html>
