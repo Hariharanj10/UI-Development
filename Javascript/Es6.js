@@ -104,27 +104,36 @@
 //  }
 //  let result =capitilize(arr)
 //  console.log(result)
-const students = [
-    { name: "Alice", scores: [90, 85, 92] },
-    { name: "Bob", scores: [75, 80, 85] },
-    { name: "Charlie", scores: [90, 95, 85] },
-    { name: "David", scores: [100, 100, 100] }
-  ];
+// const students = [
+//     { name: "Alice", scores: [90, 85, 92] },
+//     { name: "Bob", scores: [75, 80, 85] },
+//     { name: "Charlie", scores: [90, 95, 85] },
+//     { name: "David", scores: [100, 100, 100] }
+//   ];
 
-  function findAvg(data){
-   let result= data.map((item)=> {
-        let i=0;
-        let scores=item.scores
-        let total=scores.reduce((acc,item)=> acc+item,i) 
-        let tscores=total/3
-        return {name:item.name, avg:tscores}
-    })
-    return result
-  }
-  let value=findAvg(students)
-  console.log(value)
- for (let i in students){
-    students[i].avg= value[i].avg
- }
-console.log(students)
-  
+//   function findAvg(data){
+//    let result= data.map((item)=> {
+//         let i=0;
+//         let scores=item.scores
+//         let total=scores.reduce((acc,item)=> acc+item,i) 
+//         let tscores=total/3
+//         return {name:item.name, avg:tscores}
+//     })
+//     return result
+//   }
+//   let value=findAvg(students)
+//   console.log(value)
+//  for (let i in students){
+//     students[i].avg= value[i].avg
+//  }
+// console.log(students)
+// let result =true
+// let promise = new Promise(function(resolve, reject) {    
+//   if(result){
+//     resolve("aaa")
+//   }else{
+//     reject("sorry")
+//   }
+// }).then( (a)=> {console.log(a)})
+// .catch((a)=> {console.log(a)})
+
