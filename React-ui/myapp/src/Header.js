@@ -12,6 +12,7 @@ const LinkButton = styled.a`
 const Header = () => {
   return (
     <>
+    
       <div className="header">
         <div className="right-nav">
           <h1>logo</h1>
