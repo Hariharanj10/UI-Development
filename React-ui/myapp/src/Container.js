@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Rate } from "antd";
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -11,6 +12,7 @@ const GridItem =styled.div`
 function Container() {
   return (
   <GridContainer>
+    <Rate allowHalf/>
     <GridItem>hello</GridItem>
     <GridItem>hello</GridItem>
     <GridItem>hello</GridItem>
