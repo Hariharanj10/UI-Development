@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ProfileComponent from "./ProfileComponent";
 const StyledMainContainer = styled.div`
@@ -82,6 +82,10 @@ const FormComponent = () => {
   const locationOptions = ["chennai", "Bangalore", "Coimbatore"];
   const ratingOptions = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
 
+  useEffect(() => {
+    setUserFilter(final);
+  }, [final]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const newFormData = {
@@ -102,11 +106,10 @@ const FormComponent = () => {
     setFinal((prevFinal) => prevFinal.filter((k, i) => i !== index));
   };
   const handleSearch = (e) => {
-    // setFilterValue(e.target.value)
-    // console.log(filterValue)
-    setUserFilter(
-      final.filter((item) => item.username.startsWith(e.target.value))
+    const filtered = final.filter((item) =>
+      item.username.startsWith(e.target.value)
     );
+    setUserFilter(filtered);
   };
   return (
     <StyledMainContainer>
@@ -163,15 +166,11 @@ const FormComponent = () => {
             {user && <StyledButton type="submit">Submit</StyledButton>}
           </StyledItem>
         </StyledForm>
-        <input onChange={handleSearch}></input>
+        <input onChange={handleSearch} placeholder="search "></input>
       </StyledContainer>
-      <ProfileComponent props={userFilter.length > 0 ? userFilter :final} onDelete={handleDelete} />;
+      <ProfileComponent props={userFilter} onDelete={handleDelete} />;
     </StyledMainContainer>
   );
 };
 
 export default FormComponent;
-
-//{ formData.username && (
-// <ProfileComponent props={final} onDelete={handleDelete} />
-// )}
