@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 const StyledImage = styled.img`
   width: 200px;
   height: 200px;
@@ -111,23 +111,22 @@ const FetchingData = () => {
   return (
     <>
       <StyledHeaded>
-  <SyledItem>
-    <Link to="/about">About</Link>
-    <Link to="/">Home</Link>
-    <Link to="/contact">Contact</Link>
-  </SyledItem>
-  <StyledItem>
-    <input
-      type="text"
-      onChange={handleSearch}
-      placeholder="search..."
-    ></input>
-  </StyledItem>
-  <SyledItem>
-    <Link to="/signin">Sign in</Link>
-  </SyledItem>
-</StyledHeaded>
-
+        <SyledItem>
+          <div>About</div>
+          <div>Home</div>
+          <div>Contact</div>
+        </SyledItem>
+        <StyledItem>
+          <input
+            type="text"
+            onChange={handleSearch}
+            placeholder="search..."
+          ></input>
+        </StyledItem>
+        <SyledItem>
+          <div>Sign in</div>
+        </SyledItem>
+      </StyledHeaded>
       <StyledWrapper>
         {filterData?.map((item) => {
           return (
