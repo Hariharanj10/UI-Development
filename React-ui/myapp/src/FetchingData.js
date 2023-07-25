@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const StyledImage = styled.img`
   width: 200px;
   height: 200px;
@@ -27,7 +27,7 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-//   margin: 10px;
+  //   margin: 10px;
   margin-top: 70px;
   padding: 10px;
   justify-content: center;
@@ -74,6 +74,9 @@ const SyledItem = styled.div`
 const FetchingData = () => {
   const [postData, setPostData] = useState({});
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState();
+  const [filterData, setFilterData] = useState([]);
+  
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
@@ -81,7 +84,6 @@ const FetchingData = () => {
       .catch((err) => console.log(err));
   }, []);
   const handlePost = (item) => {
-    console.log(item);
     setPostData({
       title: item?.title,
       price: item?.price,
@@ -91,23 +93,43 @@ const FetchingData = () => {
     });
     axios
       .post("https://fakestoreapi.com/products", postData)
-      .then((res) => res.status === 200 && alert("sucessfully posted  and Add to cart successfully"))
-      .catch((err) => alert("Error occur ", err));
+      .then(
+        (res) =>
+          res.status === 200 && alert(` Id ${item.id}  is updated successfully`)
+      )
+      .catch((err) => alert("err"));
   };
+  const handleSearch = (e) => {
+    const filtered = data.filter((item) =>
+      item.category.startsWith(e.target.value)
+    );
+    setFilterData(filtered);
+  };
+  useEffect(() => {
+    setFilterData(data);
+  }, [data]);
   return (
     <>
       <StyledHeaded>
-        <SyledItem>
-          <div>About</div>
-          <div>Home</div>
-          <div>Contact</div>
-        </SyledItem>
-        <SyledItem>
-          <div>Sign in</div>
-        </SyledItem>
-      </StyledHeaded>
+  <SyledItem>
+    <Link to="/about">About</Link>
+    <Link to="/">Home</Link>
+    <Link to="/contact">Contact</Link>
+  </SyledItem>
+  <StyledItem>
+    <input
+      type="text"
+      onChange={handleSearch}
+      placeholder="search..."
+    ></input>
+  </StyledItem>
+  <SyledItem>
+    <Link to="/signin">Sign in</Link>
+  </SyledItem>
+</StyledHeaded>
+
       <StyledWrapper>
-        {data?.map((item) => {
+        {filterData?.map((item) => {
           return (
             <StyledContainer key={item.id}>
               <StyledItem>
