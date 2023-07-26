@@ -1,4 +1,4 @@
-/* .App-header{
+.App-header{
   display: flex;
   justify-content: space-around;
   height:77px;
@@ -65,4 +65,4 @@ input::placeholder{
 }
 input{
   cursor: pointer;
-} */
+}
