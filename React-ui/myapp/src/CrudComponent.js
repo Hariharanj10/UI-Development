@@ -3,7 +3,8 @@ import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaSistrix } from "react-icons/fa";
-
+import Card from "./Card";
+import { FaShoppingCart } from "react-icons/fa";
 const StyledImage = styled.img`
   width: 200px;
   height: 200px;
@@ -20,7 +21,6 @@ const StyledContainer = styled.div`
   padding: 10px;
   justify-content: center;
   align-items: center;
-  // border: 5px solid #303952;
   min-width: 25%;
   background-color: #ffffff;
 `;
@@ -96,13 +96,22 @@ const StyledForm = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
-const StyledFormElement = styled.form``;
-
-const StyledsearchDiv = styled.div`
+const AddCardButton = styled.button`
+  width: 150px;
   height: 30px;
-  margin: 0px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  margin: 4px;
+  font-weight: bold;
+  &:hover {
+    cursor: pointer;
+  }
 `;
-const CrudComponent = () => {
+const StyledFormElement = styled.form``;
+const CrudComponent = ({ setValue, setFindLength }) => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState();
   const [newItem, setNewItem] = useState({
@@ -112,11 +121,11 @@ const CrudComponent = () => {
     images: "",
     category: "",
   });
-
+  const [addCard, setAddCard] = useState([]);
   const fetching = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/products");
-      setData(res.data);
+      const response = await axios.get("http://localhost:8000/products");
+      setData(response.data);
     } catch (err) {
       console.log("err");
     }
@@ -129,9 +138,9 @@ const CrudComponent = () => {
   const handleAdd = () => {
     axios
       .post("http://localhost:8000/products", newItem)
-      .then((res) => {
-        console.log(res);
-        if (res.ok) {
+      .then((response) => {
+        console.log(response);
+        if (response.ok) {
           alert("Item added successfully");
           fetching();
         }
@@ -141,35 +150,58 @@ const CrudComponent = () => {
 
   const handleUpdate = (item) => {
     console.log(item);
-    const category = prompt("enter a category");
-    const price = prompt("Enter the price");
-    const updateobj = {
-      ...item,
-      category: category,
-      price: price,
-    };
-    console.log(updateobj);
-    axios
-      .put(`http://localhost:8000/products/${item.id}`, updateobj)
-      .then((res) => {
-        if (res.status === 200) {
-          alert("Item updated successfully");
-          fetching();
+    const category = prompt("Enter a category");
+
+    if (category === null || category.trim() === "") {
+      alert("You must enter a category value.");
+    } else {
+      const isValidCategory = /^[a-zA-Z]+$/.test(category);
+
+      if (!isValidCategory) {
+        alert("Category input is not valid. Please enter valid inputs");
+      } else {
+        const price = prompt("Enter the price");
+
+        if (price === null || price.trim() === "") {
+          alert("You must enter a price value.");
+        } else {
+          const numericPrice = parseFloat(price);
+          if (isNaN(numericPrice) || numericPrice < 0) {
+            alert("Price input is not valid.");
+          } else {
+            const updateobj = {
+              ...item,
+              category: category,
+              price: numericPrice,
+            };
+            console.log(updateobj);
+            axios
+              .put(`http://localhost:8000/products/${item.id}`, updateobj)
+              .then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                  alert("Item updated successfully");
+                  fetching();
+                }
+              })
+              .catch((err) => alert("Error while updating item."));
+          }
         }
-      })
-      .catch((err) => alert("Error while updating item."));
+      }
+    }
   };
 
   const handleDelete = (itemId) => {
-    axios
-      .delete(`http://localhost:8000/products/${itemId}`)
-      .then((res) => {
-        if (res.status === 200) {
-          alert("Item deleted successfully");
-          fetching();
-        }
-      })
-      .catch((err) => alert("Error while deleting item."));
+    if (filterData.length > 2) {
+      axios
+        .delete(`http://localhost:8000/products/${itemId}`)
+        .then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            alert("Item deleted successfully");
+            fetching();
+          }
+        })
+        .catch((err) => alert("Error while deleting item."));
+    }
   };
 
   const handleChange = (e) => {
@@ -180,15 +212,18 @@ const CrudComponent = () => {
     }));
   };
   const handleSearch = (e) => {
-    const filtered = data.filter((item) =>
+    const filtered = data?.filter((item) =>
       item?.category.startsWith(e.target.value)
     );
-
     setFilterData(filtered);
   };
   useEffect(() => {
     setFilterData(data);
   }, [data]);
+  const handleAddCard = (item) => {
+    setValue((prevAddCard) => [...prevAddCard, item]);
+    setFindLength((index) => index + 1);
+  };
 
   return (
     <>
@@ -211,6 +246,12 @@ const CrudComponent = () => {
               </StyledItem>
               <StyledItem>
                 <h3>Price: {item?.price}</h3>
+              </StyledItem>
+              <StyledItem>
+                <AddCardButton onClick={() => handleAddCard(item)}>
+                  {" "}
+                  <FaShoppingCart /> Add to cart
+                </AddCardButton>
               </StyledItem>
               <StyledItem>
                 <StyledButton onClick={() => handleUpdate(item)}>
@@ -236,6 +277,9 @@ const CrudComponent = () => {
               value={newItem?.title}
               onChange={handleChange}
               required
+              minLength={3}
+              maxLength={15}
+              pattern="[A-Za-z]+"
             />
           </div>
           <div>
@@ -246,6 +290,9 @@ const CrudComponent = () => {
               name="price"
               value={newItem?.price}
               onChange={handleChange}
+              minLength={1}
+              maxLength={15}
+              pattern="[0-9]+"
               required
             />
           </div>
@@ -256,6 +303,7 @@ const CrudComponent = () => {
               type="text"
               name="description"
               maxLength={10}
+              minLength={3}
               value={newItem?.description}
               onChange={handleChange}
               required
@@ -280,6 +328,9 @@ const CrudComponent = () => {
               value={newItem?.category}
               onChange={handleChange}
               required
+              minLength={1}
+              maxLength={15}
+              pattern="[A-Za-z]+"
             />
           </div>
           <StyledButton type="submit">Add</StyledButton>

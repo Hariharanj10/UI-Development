@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
+import { FaShoppingCart } from "react-icons/fa";
 const StyledItem = styled.div`
   display: flex;
   justify-content: space-between;
@@ -29,7 +30,21 @@ const StyledLink =styled(Link)`
     margin:10px;
     padding:10px;
 `
-const Header = () => {
+const StyledCard =styled(Link)`
+    color:white;
+    text-decoration:none;
+    margin:10px;
+    padding:10px;
+    position:relative;
+`
+const StyledSpan =styled.span`
+  position:absolute
+  font-size:12px;
+  border-radius:50px;
+  color:black;
+`
+
+const Header = ({findLength}) => {
   return (
     <>
       <StyledHeaded>
@@ -37,6 +52,8 @@ const Header = () => {
           <div>
             <StyledLink to="/">Home</StyledLink>
             <StyledLink to="about">About</StyledLink>
+            <StyledCard to="/Card"> < FaShoppingCart size={"25"} />  Cart <StyledSpan>{findLength}</StyledSpan>
+             </StyledCard>
           </div>
         </StyledItem>
         <StyledItem>
