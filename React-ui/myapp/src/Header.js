@@ -41,7 +41,7 @@ const StyledSpan =styled.span`
   position:absolute
   font-size:12px;
   border-radius:50px;
-  color:black;
+  color:white;
 `
 
 const Header = ({findLength}) => {

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { FaSistrix } from "react-icons/fa";
-import Card from "./Card";
 import { FaShoppingCart } from "react-icons/fa";
 const StyledImage = styled.img`
   width: 200px;
@@ -121,11 +118,10 @@ const CrudComponent = ({ setValue, setFindLength }) => {
     images: "",
     category: "",
   });
-  const [addCard, setAddCard] = useState([]);
   const fetching = async () => {
     try {
       const response = await axios.get("http://localhost:8000/products");
-      setData(response.data);
+      setData(response?.data);
     } catch (err) {
       console.log("err");
     }
@@ -140,7 +136,7 @@ const CrudComponent = ({ setValue, setFindLength }) => {
       .post("http://localhost:8000/products", newItem)
       .then((response) => {
         console.log(response);
-        if (response.ok) {
+        if (response?.ok) {
           alert("Item added successfully");
           fetching();
         }
@@ -152,7 +148,7 @@ const CrudComponent = ({ setValue, setFindLength }) => {
     console.log(item);
     const category = prompt("Enter a category");
 
-    if (category === null || category.trim() === "") {
+    if (category === null || category?.trim() === "") {
       alert("You must enter a category value.");
     } else {
       const isValidCategory = /^[a-zA-Z]+$/.test(category);
@@ -178,7 +174,7 @@ const CrudComponent = ({ setValue, setFindLength }) => {
             axios
               .put(`http://localhost:8000/products/${item.id}`, updateobj)
               .then((response) => {
-                if (response.status >= 200 && response.status < 300) {
+                if (response?.status >= 200 && response?.status < 300) {
                   alert("Item updated successfully");
                   fetching();
                 }
@@ -191,11 +187,11 @@ const CrudComponent = ({ setValue, setFindLength }) => {
   };
 
   const handleDelete = (itemId) => {
-    if (filterData.length > 2) {
+    if (filterData?.length > 2) {
       axios
         .delete(`http://localhost:8000/products/${itemId}`)
         .then((response) => {
-          if (response.status >= 200 && response.status < 300) {
+          if (response?.status >= 200 && response?.status < 300) {
             alert("Item deleted successfully");
             fetching();
           }
@@ -239,7 +235,7 @@ const CrudComponent = ({ setValue, setFindLength }) => {
           return (
             <StyledContainer key={item?.id}>
               <StyledItem>
-                <StyledImage src={item?.images} />
+                <StyledImage src={item?.images} alt="img" />
               </StyledItem>
               <StyledItem>
                 <h3>{item?.category}</h3>
