@@ -22,7 +22,6 @@ const Styledheading = styled.h2`
   justify-content: center;
 `;
 const Card = ({ items, setFindLength, setValue }) => {
-  const datas = items;
   const [updateData, setUpdateData] = useState(items);
   const handleDelete = (index) => {
     const filterData = updateData.filter((item, i) => i !== index);
