@@ -12,7 +12,7 @@ function App() {
   const [findLength, setFindLength] = useState(0);
   return (
     <>
-      <Router>
+      {/* <Router>
         <Header findLength={findLength}></Header>
         <Routes>
           <Route
@@ -42,7 +42,7 @@ function App() {
             }
           />
         </Routes>
-      </Router>
+      </Router> */}
     </>
   );
 }
