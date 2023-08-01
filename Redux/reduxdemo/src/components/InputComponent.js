@@ -1,11 +1,12 @@
 
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { setFormData } from '../redux/inputForm/InputReducer';
 
 const InputComponent = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const existingData = useSelector((state) => state?.form?.formData);
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -14,9 +15,10 @@ const InputComponent = () => {
       name,
       email,
     };
-    dispatch(setFormData(formData));
+     
+     dispatch(setFormData([...existingData,formData]));
   };
-
+ 
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -25,7 +27,7 @@ const InputComponent = () => {
           placeholder="enter a name"
           required
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e?.target.value)}
         />
       </div>
       <div>
@@ -34,7 +36,7 @@ const InputComponent = () => {
           placeholder="enter an email"
           required
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e?.target.value)}
         />
       </div>
       <div>
