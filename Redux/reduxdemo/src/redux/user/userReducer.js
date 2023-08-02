@@ -16,13 +16,15 @@ export const userReducer =(state=initialState,action)=>{
             return{
                 ...state,
                 users:action.payload,
+                loading:false,
                 error:''
             }
         case FETCH_USER_FAILURE:
             return{
                 ...state,
                 users:[],
-                error:action.payload
+                error:action.payload,
+                loading:false
             }
         default: return state
     }

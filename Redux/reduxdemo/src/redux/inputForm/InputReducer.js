@@ -28,15 +28,15 @@ const formReducer = (state = initialState, action) => {
     case SET_UPDATE:
       return {
         ...state,
-        formData: state.formData.map((item, index) =>
-          index === action.payload.index ? action.payload.updatedData : item
+        formData: state?.formData?.map((item, index) =>
+          index === action?.payload?.index ? action?.payload?.updatedData : item
         ),
       };
     case SET_DELETE:
       return {
         ...state,
-        formData: state.formData.filter(
-          (item, index) => index !== action.payload.index
+        formData: state?.formData?.filter(
+          (item, index) => index !== action?.payload?.index
         ),
       };
     default:

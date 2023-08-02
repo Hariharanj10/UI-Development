@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { FETCH_USER_FAILURE,FETCH_USER_REQUEST,FETCH_USER_SUCCESS } from "./userTypes"
 export const fetchUserRequest=()=>{
     return{
@@ -16,3 +17,16 @@ export const fetchUserFailure=error=>{
         payload:error
     }
 }
+export const fetchUsers = () => {
+    return async (dispatch) => {
+      dispatch(fetchUserRequest());
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        const users = response?.data;
+        dispatch(fetchUserSuccess(users));
+      } catch (error) {
+        const errorMsg = error?.message;
+        dispatch(fetchUserFailure(errorMsg));
+      }
+    };
+  };

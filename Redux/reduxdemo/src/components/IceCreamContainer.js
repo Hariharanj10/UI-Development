@@ -1,7 +1,7 @@
 import { UseSelector, useDispatch, useSelector } from "react-redux";
 import { addIceCream, cancelIceCream } from "../redux/iceCream/IceCreamAction";
 export const IceCreamContainer = () => {
-  const numofIceCream = useSelector((state) => state.iceCream.numofIceCream);
+  const numofIceCream = useSelector((state) => state?.iceCream?.numofIceCream);
   const dispatch = useDispatch();
   return (
     <>
