@@ -7,12 +7,12 @@ export const iceCreamReducer = (state = initialState, action) => {
     case Add_IceCream:
       return {
         ...state,
-        numofIceCream: state.numofIceCream + 1,
+        numofIceCream: state?.numofIceCream + 1,
       };
     case Cancel_IceCream:
       return {
         ...state,
-        numofIceCream: state.numofIceCream - 1,
+        numofIceCream: state?.numofIceCream - 1,
       };
     default:
       return state;
