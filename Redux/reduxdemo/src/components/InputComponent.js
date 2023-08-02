@@ -1,7 +1,34 @@
-
 import React, { useState } from "react";
-import { useDispatch,useSelector } from "react-redux";
-import { setFormData } from '../redux/inputForm/InputReducer';
+import { useDispatch, useSelector } from "react-redux";
+import { setFormData } from "../redux/inputForm/InputReducer";
+import styled from 'styled-components'; 
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const InputContainer = styled.div`
+  margin-bottom: 15px;
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+`;
+
+const SubmitButton = styled.input`
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+`;
 
 const InputComponent = () => {
   const [name, setName] = useState("");
@@ -15,34 +42,38 @@ const InputComponent = () => {
       name,
       email,
     };
-     
-     dispatch(setFormData([...existingData,formData]));
+
+    dispatch(setFormData([...existingData, formData]));
   };
- 
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input
+    <FormContainer onSubmit={handleSubmit}>
+      <InputContainer>
+        <Input
           type="text"
           placeholder="enter a name"
           required
           value={name}
-          onChange={(e) => setName(e?.target.value)}
+          maxLength={20}
+          minLength={2}
+          onChange={(e) => setName(e?.target?.value)}
         />
-      </div>
-      <div>
-        <input
+      </InputContainer>
+      <InputContainer>
+        <Input
           type="email"
           placeholder="enter an email"
           required
+          maxLength={20}
+          minLength={4}
           value={email}
-          onChange={(e) => setEmail(e?.target.value)}
+          onChange={(e) => setEmail(e?.target?.value)}
         />
-      </div>
-      <div>
-        <input type="submit" />
-      </div>
-    </form>
+      </InputContainer>
+      <InputContainer>
+        <SubmitButton type="submit" value="Submit" />
+      </InputContainer>
+    </FormContainer>
   );
 };
 
