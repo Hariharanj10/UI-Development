@@ -1,4 +1,4 @@
-import { fetchUserFailure,fetchUserSuccess,fetchUserRequest } from "./userActions";
+
 import { FETCH_USER_FAILURE, FETCH_USER_REQUEST, FETCH_USER_SUCCESS } from "./userTypes";
 const initialState={
     loading:false,
@@ -6,7 +6,7 @@ const initialState={
     error:''
 }
 export const userReducer =(state=initialState,action)=>{
-    switch(action.type){
+    switch(action?.type){
         case FETCH_USER_REQUEST:
             return{
                 ...state,
@@ -15,7 +15,7 @@ export const userReducer =(state=initialState,action)=>{
         case FETCH_USER_SUCCESS:
             return{
                 ...state,
-                users:action.payload,
+                users:action?.payload,
                 loading:false,
                 error:''
             }
@@ -23,7 +23,7 @@ export const userReducer =(state=initialState,action)=>{
             return{
                 ...state,
                 users:[],
-                error:action.payload,
+                error:action?.payload,
                 loading:false
             }
         default: return state

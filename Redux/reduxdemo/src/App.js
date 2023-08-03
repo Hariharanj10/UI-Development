@@ -9,8 +9,8 @@ function App() {
     
     
     <Provider store={store}>
-      {/* <InputComponent/>
-      <DisplayFormData/> */}
+      <InputComponent/>
+      <DisplayFormData/>
       <User/>
     </Provider>
   );

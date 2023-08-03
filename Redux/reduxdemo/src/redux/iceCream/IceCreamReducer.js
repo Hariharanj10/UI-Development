@@ -3,7 +3,7 @@ const initialState = {
   numofIceCream: 10,
 };
 export const iceCreamReducer = (state = initialState, action) => {
-  switch (action.type) {
+  switch (action?.type) {
     case Add_IceCream:
       return {
         ...state,

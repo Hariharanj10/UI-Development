@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import {
-  setFormData,
-  setUpdate,
-  setDelete,
-} from "../redux/inputForm/InputReducer";
+import { setUpdate, setDelete } from "../redux/inputForm/InputReducer";
 const DashboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width:auto;
+  width: auto;
 `;
 
 const TableContainer = styled.div`
@@ -33,7 +29,7 @@ const TableRow = styled.tr`
 
 const TableCell = styled.td`
   padding: 10px;
-  width:100%;
+  width: 100%;
 `;
 
 const EditableInput = styled.input`
@@ -62,7 +58,6 @@ const DisplayFormData = () => {
   const [editIndex, setEditIndex] = useState(-1);
   const handleDelete = (id) => {
     dispatch(setDelete(id));
-    console.log(id)
   };
 
   console.log(updateName);
@@ -84,72 +79,76 @@ const DisplayFormData = () => {
 
   return (
     <DashboardContainer>
-      <h2>Form Data:</h2>
-      <TableContainer>
-        <table>
-          <TableHeader>
-            <tr>
-              <th>name</th>
-              <th>email</th>
-              <th>actions</th>
-            </tr>
-          </TableHeader>
+      {formData.length > 0 ? <h2>Dashboard</h2> : <h2>Dashboard is empty</h2>}
+      {formData.length > 0 && (
+        <TableContainer>
+          <table>
+            {
+              <TableHeader>
+                <tr>
+                  <th>name</th>
+                  <th>email</th>
+                  <th>actions</th>
+                </tr>
+              </TableHeader>
+            }
 
-          <tbody>
-            {formData &&
-              formData?.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell>
-                    {editIndex === index ? (
-                      <EditableInput
-                        type="text"
-                        value={updateName}
-                        onChange={(e) => {
-                          setUpdateName(e?.target?.value);
-                        }}
-                      />
-                    ) : (
-                      item?.name
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {editIndex === index ? (
-                      <EditableInput
-                        type="email"
-                        value={updateEmail}
-                        onChange={(e) => {
-                          setUpdateEmail(e?.target?.value);
-                        }}
-                      />
-                    ) : (
-                      item?.email
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {editIndex === index ? (
-                      <ButtonContainer>
-                        <Button onClick={() => handleSave(index)}>Save</Button>
-                      </ButtonContainer>
-                    ) : (
-                      <ButtonContainer>
-                        <Button onClick={() => handleDelete(index)}>Delete</Button>
-                        <Button onClick={() => handleEdit(index)}>Edit</Button>
-                      </ButtonContainer>
-                    )}
-                  </TableCell>
-                </TableRow>
-              ))}
-          </tbody>
-        </table>
-      </TableContainer>
+            <tbody>
+              {formData &&
+                formData?.map((item, index) => (
+                  <TableRow key={index}>
+                    <TableCell>
+                      {editIndex === index ? (
+                        <EditableInput
+                          type="text"
+                          value={updateName}
+                          onChange={(e) => {
+                            setUpdateName(e?.target?.value);
+                          }}
+                        />
+                      ) : (
+                        item?.name
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      {editIndex === index ? (
+                        <EditableInput
+                          type="email"
+                          value={updateEmail}
+                          onChange={(e) => {
+                            setUpdateEmail(e?.target?.value);
+                          }}
+                        />
+                      ) : (
+                        item?.email
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      {editIndex === index ? (
+                        <ButtonContainer>
+                          <Button onClick={() => handleSave(index)}>
+                            Save
+                          </Button>
+                        </ButtonContainer>
+                      ) : (
+                        <ButtonContainer>
+                          <Button onClick={() => handleDelete(index)}>
+                            Delete
+                          </Button>
+                          <Button onClick={() => handleEdit(index)}>
+                            Edit
+                          </Button>
+                        </ButtonContainer>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </tbody>
+          </table>
+        </TableContainer>
+      )}
     </DashboardContainer>
   );
 };
 
 export default DisplayFormData;
-
-
-
-
-
-
