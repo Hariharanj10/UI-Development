@@ -7,9 +7,9 @@ function User() {
   const users = useSelector((state) => state?.user?.users);
   const loading = useSelector((state) => state?.user?.loading);
   const error = useSelector((state) => state?.user?.error);
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchUsers());
+  // }, []);
   return (
     <>
       <button onClick={() => dispatch(fetchUsers())}>call</button>

@@ -11,7 +11,7 @@ function App() {
     <Provider store={store}>
       <InputComponent/>
       <DisplayFormData/>
-      <User/>
+      {/* <User/> */}
     </Provider>
   );
 }

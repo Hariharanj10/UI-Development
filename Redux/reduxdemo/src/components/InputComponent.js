@@ -4,6 +4,7 @@ import { setFormData } from "../redux/inputForm/InputReducer";
 import styled from "styled-components";
 import { apiRequest } from "../redux/phoneNum/phoneActions";
 
+
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -77,12 +78,12 @@ const InputComponent = () => {
       name,
       email,
     };
-    console.log(formData);
     dispatch(setFormData([...existingData, formData]));
     setEmail("");
     setName("");
     setPhoneNumber("");
     setCode("");
+    setIsChecked(false);
   };
 
   return (
@@ -114,6 +115,7 @@ const InputComponent = () => {
         <div>
           <input
             type="checkbox"
+            checked={isChecked}
             onChange={(e) => setIsChecked(e.target.checked)}
           />
         </div>
@@ -122,12 +124,13 @@ const InputComponent = () => {
         </div>
       </CheckBoxContainer>
       <InputContainer>
-        <Dropdown onChange={(e) => setCode(e.target.value)}>
-          <option value={code}>select code</option>
+        <Dropdown value={code} onChange={(e) => setCode(e.target.value)}>
+          <option value="select code">select code</option>
           {sortedPhoneNums &&
             sortedPhoneNums.map((item, index) => (
               <option key={index} value={item.dial_code}>
-                {item.dial_code}{item.flag}
+                {item.dial_code}
+                {item.flag}
               </option>
             ))}
         </Dropdown>
@@ -145,5 +148,4 @@ const InputComponent = () => {
     </FormContainer>
   );
 };
-
 export default InputComponent;
