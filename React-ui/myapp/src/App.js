@@ -14,7 +14,7 @@ function App() {
   return (
     <>
     <ClipBoardComponent/>
-      /* <Router>
+      {/* <Router>
         <Header findLength={findLength}></Header>
         <Routes>
           <Route
@@ -44,7 +44,7 @@ function App() {
             }
           />
         </Routes>
-      </Router>
+      </Router> */}
     </>
   );
 }
