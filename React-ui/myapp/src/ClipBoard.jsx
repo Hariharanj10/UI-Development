@@ -1,171 +1,38 @@
-import React from "react";
-import styled from "styled-components";
 
-const Container = styled.div`
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  background-image: url("./assets/bg-header-desktop.png");
-  background-repeat: no-repeat;
-  height: 100vh;
-  font-size: 18px;
-`;
-const MainSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-const LogoContainer = styled.div`
-  margin: 150px;
-  margin-bottom: 15px;
-`;
-const MainContainerHeading = styled.h1`
-  margin-bottom: 0px;
-`;
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-`;
-const IosButton = styled.button`
-  background-color: #24bda4;
-  color: white;
-  border: none;
-  height: 40px;
-  border-radius: 25px;
-  width: 150px;
-  font-weight: bold;
-`;
-const MacButton = styled.button`
-  background-color: #6173fe;
-  color: white;
-  border: none;
-  height: 40px;
-  border-radius: 25px;
-  width: 150px;
-  font-weight: bold;
-  box-shadow: 0px 4px 6px rgba(97, 115, 254, 0.2);
-`;
-const MainContainerPara = styled.p`
-  color: hsl(210, 10%, 33%);
-  max-width: 600px;
-  text-align: center;
-  font-weight: 600px;
-  line-height: 1.5;
-  font-weight: 400px;
-`;
-const SecondSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const SecondSectionHeading = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 70px;
-`;
-const SecondSectionDivison = styled.div`
-  display: flex;
-  margin-top: 50px;
-  gap: 30px;
-`;
-const SecondSectionDivisionImgCon = styled.div``;
-const FeatureWrapper = styled.div``;
-const FeatureWrapperItems = styled.div``;
-const FeatureWrapperPtag = styled.p`
-  max-width: 380px;
-  line-height: 1.8;
-`;
-const FourthSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 60px;
-`;
-const FourthSectionDivison = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 60px;
-`;
-const FourthDivisonItem = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-const FourthDivisionItemPtag = styled.p`
-  max-width: 380px;
-  text-align: center;
-  line-height: 1.5;
-`;
-const StyledPara = styled.p`
-  color: hsl(210, 10%, 33%);
-  max-width: 680px;
-  text-align: center;
-  line-height: 1.5;
-  font-weight: 400px;
-`;
-const ThirdSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-`;
-const StyledHeading = styled.h2`
-  font-weight: 600px;
-  text-align: center;
-`;
-const ThirdSectionHeading = styled.h2`
-  text-align: center;
-  margin-top: 50px;
-`;
-const ThirdSectionPtag = styled.p`
-  max-width: 600px;
-  text-align: center;
-  margin-left: 110px;
-  margin-bottom: 100px;
-  line-height: 1.5;
-`;
-const ThirdSectionImg = styled.img`
-  text-align: center;
-`;
-const BrandSection = styled.div`
-  display: flex;
-  margin: 80px;
-  gap: 80px;
-  justify-content: center;
-  align-items: center;
-`;
-const DownloadSection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 150px;
-`;
-const Footer = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: hsl(220, 18%, 97%);
-  color: grey;
-`;
-const FooterLogo = styled.svg`
-  font-size: 10px;
-`;
-const FooterIcons = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-`;
+import {
+  Container,
+  MainSection,
+  LogoContainer,
+  MainContainerHeading,
+  ButtonContainer,
+  CommonButton,
+  IosButton,
+  MacButton,
+  MainContainerPara,
+  SecondSection,
+  SecondSectionHeading,
+  SecondSectionDivison,
+  SecondSectionDivisionImgCon,
+  SecondSectionDivisionImg,
+  FeatureWrapper,
+  FeatureWrapperItems,
+  FeatureWrapperPtag,
+  FourthSection,
+  FourthSectionDivison,
+  FourthDivisonItem,
+  FourthDivisionItemPtag,
+  StyledPara,
+  ThirdSection,
+  StyledHeading,
+  ThirdSectionHeading,
+  ThirdSectionPtag,
+  ThirdSectionImg,
+  BrandSection,
+  DownloadSection,
+  Footer,
+  FooterLogo,
+  FooterIcons
+} from './ClipBoardStyles'; 
 function ClipBoardComponent() {
   return (
     <Container>
@@ -217,7 +84,7 @@ function ClipBoardComponent() {
         </SecondSectionHeading>
         <SecondSectionDivison>
           <SecondSectionDivisionImgCon>
-            <img src="./assets/image-computer.png" alt="computer img" />
+            <SecondSectionDivisionImg src="./assets/image-computer.png" alt="computer img" />
           </SecondSectionDivisionImgCon>
           <FeatureWrapper>
             <FeatureWrapperItems>

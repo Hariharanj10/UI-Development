@@ -7,13 +7,13 @@ import "./App.css";
 import CrudComponent from "./CrudComponent";
 import Card from "./Card";
 import { useState } from "react";
-import ClipBoardComponent from "./ClipBoardComponent";
+import ClipBoard from "./ClipBoard"
 function App() {
   const [value, setValue] = useState([]);
   const [findLength, setFindLength] = useState(0);
   return (
     <>
-    <ClipBoardComponent/>
+    <ClipBoard/>
       {/* <Router>
         <Header findLength={findLength}></Header>
         <Routes>
